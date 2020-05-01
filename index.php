@@ -5,4 +5,5 @@
 	$plantilla = new vistasControlador();
 	$plantilla->obtener_plantilla_controlador();
 
-	/**modificacion */
+	/**modificacion 1*/
+	/**modificacion 2*/
