@@ -148,7 +148,7 @@
 		    	</fieldset>
 		    	<br>
 			    <p class="text-center" style="margin-top: 20px;">
-					<button type="reset" class="btn btn-danger btn-raised btn-sm"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>
+					<!-- <button type="reset" class="btn btn-danger btn-raised btn-sm"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>-->
 			    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
 			    </p>
 		    </form>

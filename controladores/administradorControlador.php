@@ -98,7 +98,7 @@
 								"Foto"=>$foto
 							];
 
-							$guardarCuenta=mainModelo::agregar_usuarios($dataCuenta);
+							$guardarCuenta=administradorModelo::agregar_usuarios_modelo($dataCuenta);
 
 
 							if ($guardarCuenta->rowCount()>=1) {
