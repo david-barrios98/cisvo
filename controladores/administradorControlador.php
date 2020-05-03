@@ -1,8 +1,8 @@
 <?php
 	if($peticionAjax){
-		require_once "../modelo/administradorModelo.php";
+		require_once "../modelos/administradorModelo.php";
 	}else{
-		require_once "./modelo/administradorModelo.php";
+		require_once "./modelos/administradorModelo.php";
 	}
 	
 	/**
@@ -21,22 +21,21 @@
 			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
 			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
 
-			$usuario=mainModelo::limpiar_cadena($_POST['usuario-reg']);
+			//$usuario=mainModelo::limpiar_cadena($_POST['usuario-reg']);
 			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
 			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
 			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
-			$genero=mainModelo::limpiar_cadena($_POST['optionsGenero']);
-			$privilegio=mainModelo::limpiar_cadena($_POST['optionsPrivilegio']);
+			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
+			//$privilegio=mainModelo::limpiar_cadena($_POST['optionsPrivilegio']);
 
-			/*Foto segun el sexo*/
+			/*Foto segun el sexo
 			if ($genero=="Masculino") {
 				$foto="AdminMale.png";
 			} else {
 				$foto="AdminFemale.png";
-			}
-
+			}*/
 			/*comprobacion de contraseña, que sean identicas*/
-			if ($pass1!=$pass2) {
+			if ($pass1 != $pass2) {
 				$alerta=[
 					"Alerta"=>"simple",
 					"Titulo"=>"Ocurrio un error inesperado",
@@ -83,22 +82,23 @@
 							/*Validación de Usuario en el sistema*/
 							$consulta_id=mainModelo::ejecutar_consulta_simple("SELECT id FROM cuenta");
 							$cantidad=$consulta_id->rowCount()+1;
-							$codigo=mainModelo::generar_codigo_aleatorio("AC",5,$cantidad);//genero el codigo aleatorio
+							//$codigo=mainModelo::generar_codigo_aleatorio("AC",5,$cantidad);//genero el codigo aleatorio
 							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
 
 							$dataCuenta=[
-								"Codigo"=>$codigo,
-								"Privilegio"=>$privilegio,
-								"Usuario"=>$usuario,
-								"Clave"=>$clave,
+								"Id"=>$dni,
+								"Nombre"=>$nombre,
+								"Apellido"=>$apellido,
+								"Telefono"=>$telefono,
 								"Email"=>$email,
-								"Estado"=>"Activo",
+								"Estado"=>"A",
+								"Direccion"=>$direccion,
 								"Tipo"=>"Administrador",
 								"Genero"=>$genero,
 								"Foto"=>$foto
 							];
 
-							$guardarCuenta=mainModelo::agregar_cuenta($dataCuenta);
+							$guardarCuenta=mainModelo::agregar_usuarios($dataCuenta);
 
 
 							if ($guardarCuenta->rowCount()>=1) {

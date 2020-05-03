@@ -36,7 +36,7 @@
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; DATOS DEL USUARIO</h3>
 		</div>
 		<div class="panel-body">
-			<form>
+			<form action="<?php echo SERVERURL?>ajax/administradorAjax.php" method="POST" data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" enctype="multipart/form-data" >
 		    	<fieldset>
 		    		<legend><i class="zmdi zmdi-assignment"></i> &nbsp; Datos básicos</legend>
 		    		<div class="full-box dashboard-sideBar-UserInfo">
@@ -50,37 +50,37 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="DOC" required="" maxlength="50">
+								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="dni-reg" id="dni-reg" required="" maxlength="50">
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="NOMBRE" required="" maxlength="50">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="nombre-reg" id="nombre-reg" r required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="APELLIDO" required="" maxlength="50">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="apellido-reg" id="apellido-reg" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Fecha Nacimiento</label>
-								  	<input  class="form-control" type="date" name="FECHANACIMIENTO">
+								  	<input  class="form-control" type="date" name="fnaci-reg" id="fnaci-reg">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Dirección</label>
-								  	<input class="form-control" type="text" name="DIRECCION" maxlength="70">
+								  	<input class="form-control" type="text" name="direccion-reg" id="direccion-reg" maxlength="70">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Municipio</label>				  	
-									<select class="form-control" name ="MUNICIPIO" id="MUNICIPIO">
+									<select class="form-control" name="municipio-reg" id="municipio-reg">
 									<option value="" disabled="" selected=""></option>
 									  <option value="volvo">Soledad</option>
 								   	  <option value="volvo">Barranquilla</option>
@@ -93,13 +93,13 @@
 									<label class="control-label">Genero</label>
 									<div class="radio radio-primary">
 										<label>
-											<input type="radio" name="GENERO" id="optionsRadios1" value="Masculino" checked="">
+											<input type="radio" name="genero-reg" id="masculino-reg" value="Masculino" checked="">
 											<i class="zmdi zmdi-male-alt"></i> &nbsp; Masculino
 										</label>
 									</div>
 									<div class="radio radio-primary">
 										<label>
-											<input type="radio" name="GENERO" id="optionsRadios2" value="Femenino">
+											<input type="radio" name="genero-reg" id="femenino-reg" value="Femenino">
 											<i class="zmdi zmdi-female"></i> &nbsp; Femenino
 										</label>
 									</div>
@@ -116,13 +116,13 @@
 						<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Teléfono</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-reg" maxlength="15">
+								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-reg"  id="telefono-reg" maxlength="15">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">E-mail</label>
-								  	<input class="form-control" type="email" name="email-reg" maxlength="50">
+								  	<input class="form-control" type="email" name="email-reg" id="email-reg" maxlength="50">
 								</div>
 		    				</div>
 		    			</div>
@@ -135,13 +135,13 @@
 						<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Contraseña *</label>
-								  	<input class="form-control" type="password" name="PASS1" required="" maxlength="40">
+								  	<input class="form-control" type="password" name="password1-reg" id="password1-reg"required="" maxlength="40">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Confirme contraseña *</label>
-								  	<input class="form-control" type="password" name="PASS2" required="" maxlength="40">
+								  	<input class="form-control" type="password" name="password2-reg" id="password2-reg" required="" maxlength="40">
 								</div>
 		    				</div>
 		    		</div>

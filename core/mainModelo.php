@@ -20,6 +20,25 @@
 			return $respuesta;
 		}
 
+		
+		/*funcion para añadir usuarios en la bd con un array */
+		protected function agregar_usuarios($datos){
+			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO tbl_usuario VALUES (:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol, :Estado);");
+
+			/*Funcion para vincular un parametro al nombre de la variable espcificada */
+			$sql->bindParam(":Codigo",$datos['Codigo']);
+			$sql->bindParam(":Privilegio",$datos['Privilegio']);
+			$sql->bindParam(":Usuario",$datos['Usuario']);
+			$sql->bindParam(":Clave",$datos['Clave']);
+			$sql->bindParam(":Email",$datos['Email']);
+			$sql->bindParam(":Estado",$datos['Estado']);
+			$sql->bindParam(":Tipo",$datos['Tipo']);
+			$sql->bindParam(":Genero",$datos['Genero']);
+			$sql->bindParam(":Foto",$datos['Foto']);
+			$sql->execute();
+			return $sql;
+		}
+
 		/*funcion para añadir cuentas en la bd con un array */
 		protected function agregar_cuenta($datos){
 			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO cuenta(CuentaCodigo,CuentaPrivilegio,CuentaUsuario,CuentaClave,CuentaEmail,CuentaEstado,CuentaTipo,CuentaGenero,CuentaFoto) VALUES(:Codigo,:Privilegio,:Usuario,:Clave,:Email,:Estado,:Tipo,:Genero,:Foto)");
