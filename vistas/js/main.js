@@ -62,17 +62,17 @@ $(document).ready(function(){
 		}
 	});
 	$('.FormularioAjax').submit(function(e){
-        e.preventDefault();
+        e.preventDefault(); //PREVENIR EL ENVIO POR DEFECTO (URL)
 
-        var form=$(this);
+        var form=$(this); //SE ALMACENAN LOS ADATOS DE FORMULADO
 
-        var tipo=form.attr('data-form');
-        var accion=form.attr('action');
-        var metodo=form.attr('method');
-        var respuesta=form.children('.RespuestaAjax');
+        var tipo=form.attr('data-form'); //SE ALMACENA EL ATRIBUTO data-from
+        var accion=form.attr('action'); //SE ALMACENA EL ATRIBUTO action
+        var metodo=form.attr('method'); //SE ALMACENA EL ATRIBUTO method
+        var respuesta=form.children('.RespuestaAjax'); //SE SELECIONANA UN HIJO DEL FORMCULARIO DONDE SE MOSTRARA LA RESPUESTA
 
         var msjError="<script>swal('Ocurrió un error inesperado','Por favor recargue la página','error');</script>";
-        var formdata = new FormData(this);
+        var formdata = new FormData(this); //ARRAY DE DATOS ENVIADOS POR AJAX
  
 
         var textoAlerta;
@@ -98,7 +98,7 @@ $(document).ready(function(){
             $.ajax({
                 type: metodo,
                 url: accion,
-                data: formdata ? formdata : form.serialize(),
+                data: formdata ? formdata : form.serialize(), //SE VALIDA UE LA VARIABLE fromdata VENGA DEIFINA 
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -110,7 +110,8 @@ $(document).ready(function(){
                         percentComplete = parseInt(percentComplete * 100);
                         if(percentComplete<100){
                         	respuesta.html('<p class="text-center">Procesado... ('+percentComplete+'%)</p><div class="progress progress-striped active"><div class="progress-bar progress-bar-info" style="width: '+percentComplete+'%;"></div></div>');
-                      	}else{
+                            alert('error,')
+                        }else{
                       		respuesta.html('<p class="text-center"></p>');
                       	}
                       }

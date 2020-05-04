@@ -36,7 +36,9 @@
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; DATOS DEL USUARIO</h3>
 		</div>
 		<div class="panel-body">
-			<form action="<?php echo SERVERURL?>ajax/administradorAjax.php" method="POST" data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" enctype="multipart/form-data" >
+			<form action="<?php echo SERVERURL?>ajax/administradorAjax.php" method="POST" 
+			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" 
+			 enctype="multipart/form-data" > 
 		    	<fieldset>
 		    		<legend><i class="zmdi zmdi-assignment"></i> &nbsp; Datos básicos</legend>
 		    		<div class="full-box dashboard-sideBar-UserInfo">
@@ -151,6 +153,7 @@
 					<!-- <button type="reset" class="btn btn-danger btn-raised btn-sm"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>-->
 			    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
 			    </p>
+				<div class="RespuestaAjax" id="RespuestaAjax" name="RespuestaAjax"> <!--MOSTARÁ LA RESPUESTA DEL AJAX--></div>
 		    </form>
 		</div>
 	</div>
