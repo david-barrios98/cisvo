@@ -76,7 +76,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Dirección</label>
-								  	<input class="form-control" type="text" name="direccion-reg" id="direccion-reg" maxlength="70">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="direccion-reg" id="direccion-reg" maxlength="70">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
@@ -98,13 +98,13 @@
 									<label class="control-label">Genero</label>
 									<div class="radio radio-primary">
 										<label class="col-md-4">
-											<input type="radio" name="GENERO" id="optionsRadios1" value="Masculino" checked="">
+											<input type="radio" name="genero-reg" id="masculino" value="M" checked="">
 											<i class="zmdi zmdi-male-alt"></i> &nbsp; Masculino
 										</label>
 									</div>
 									<div class="radio radio-primary">
 										<label class="col-md-4">
-											<input type="radio" name="GENERO" id="optionsRadios2" value="Femenino">
+											<input type="radio" name="genero-reg" id="femenino" value="F">
 											<i class="zmdi zmdi-female"></i> &nbsp; Femenino
 										</label>
 									</div>
@@ -156,7 +156,7 @@
 					<!-- <button type="reset" class="btn btn-danger btn-raised btn-sm"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>-->
 			    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
 			    </p>
-				<div class="RespuestaAjax" id="RespuestaAjax" name="RespuestaAjax"> <!--MOSTARÁ LA RESPUESTA DEL AJAX--></div>
+				<div class="RespuestaAjax" id="RespuestaAjax" name="RespuestaAjax"></div><!--MOSTARÁ LA RESPUESTA DEL AJAX-->
 		    </form>
 		</div>
 	</div>

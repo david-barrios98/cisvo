@@ -25,15 +25,18 @@
 			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO tbl_usuario VALUES (:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol, :Estado);");
 
 			/*Funcion para vincular un parametro al nombre de la variable espcificada */
-			$sql->bindParam(":Codigo",$datos['Codigo']);
-			$sql->bindParam(":Privilegio",$datos['Privilegio']);
-			$sql->bindParam(":Usuario",$datos['Usuario']);
+			$sql->bindParam(":Id",$datos['DNI']);
+			$sql->bindParam(":Nombre",$datos['Nombre']);
+			$sql->bindParam(":Apellido",$datos['Apellido']);
+			$sql->bindParam(":Direccion",$datos['Direccion']);
+			$sql->bindParam(":Telefono",$datos['Telefono']);
 			$sql->bindParam(":Clave",$datos['Clave']);
-			$sql->bindParam(":Email",$datos['Email']);
+			$sql->bindParam(":Fnac",$datos['Fnacimiento']);
+			$sql->bindParam(":Correo",$datos['Correo']);
 			$sql->bindParam(":Estado",$datos['Estado']);
-			$sql->bindParam(":Tipo",$datos['Tipo']);
-			$sql->bindParam(":Genero",$datos['Genero']);
-			$sql->bindParam(":Foto",$datos['Foto']);
+			$sql->bindParam(":Municipio",$datos['Municipio']);
+			$sql->bindParam(":Sexo",$datos['Sexo']);
+			$sql->bindParam(":Rol",$datos['Rol']);
 			$sql->execute();
 			return $sql;
 		}

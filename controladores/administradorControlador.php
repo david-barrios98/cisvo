@@ -23,9 +23,11 @@
 
 			//$usuario=mainModelo::limpiar_cadena($_POST['usuario-reg']);
 			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
+			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
 			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
 			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
 			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
+			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
 			//$privilegio=mainModelo::limpiar_cadena($_POST['optionsPrivilegio']);
 
 			/*Foto segun el sexo
@@ -44,7 +46,7 @@
 				];
 			}else{
 				/*Validación de documento en el sistema*/
-				$consulta_doc=mainModelo::ejecutar_consulta_simple("SELECT AdminDNI FROM admin WHERE AdminDNI='$dni'");
+				$consulta_doc=mainModelo::ejecutar_consulta_simple("SELECT Usu_Doc FROM tbl_usuario WHERE Usu_Doc='$dni'");
 				if ($consulta_doc->rowCount()>=1) {
 					$alerta=[
 						"Alerta"=>"simple",
@@ -55,7 +57,7 @@
 				}else{
 					/*Validación de email-correo en el sistema*/
 					if($email!=""){
-						$consulta_mail=mainModelo::ejecutar_consulta_simple("SELECT CuentaEmail FROM cuenta WHERE CuentaEmail='$email'");
+						$consulta_mail=mainModelo::ejecutar_consulta_simple("SELECT Usu_Correo FROM tbl_usuario WHERE Usu_Correo='$email'");
 						$ec=$consulta_mail->rowCount();
 					}else{
 						$ec=0;
@@ -70,7 +72,7 @@
 						];
 					}else{
 						/*Validación de Usuario en el sistema*/
-						$consulta_usuario=mainModelo::ejecutar_consulta_simple("SELECT CuentaUsuario FROM cuenta WHERE CuentaUsuario='$usuario'");
+						$consulta_usuario=mainModelo::ejecutar_consulta_simple("SELECT Usu_Doc FROM tbl_usuario WHERE Usu_Doc='$dni'");
 						if($consulta_usuario->rowCount()>=1){
 							$alerta=[
 								"Alerta"=>"simple",
@@ -79,9 +81,42 @@
 								"Tipo"=>"error"
 							];
 						}else{
-							/*Validación de Usuario en el sistema*/
-							$consulta_id=mainModelo::ejecutar_consulta_simple("SELECT id FROM cuenta");
-							$cantidad=$consulta_id->rowCount()+1;
+							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
+							$dataAdmin=[
+								"DNI"=>$dni,
+								"Nombre"=>$nombre,
+								"Apellido"=>$apellido,
+								"Telefono"=>$telefono,
+								"Direccion"=>$direccion,
+								"Sexo"=>$genero,
+								"Fnacimiento"=>$fnacimiento,
+								"Municipio"=>$municipio,
+								"Clave"=>$clave,
+								"Estado"=>'A',
+								"Rol"=>'A',
+								"Correo"=>$email
+							];
+							$guardarAdmin=administradorModelo::agregar_usuarios($dataAdmin);
+
+								if ($guardarAdmin->rowCount()>=1) {
+									$alerta=[
+										"Alerta"=>"limpiar",
+										"Titulo"=>"Administrador registrado",
+										"Texto"=>"Registro exitoso!",
+										"Tipo"=>"success"
+									];
+								}else{
+									//mainModelo::eliminar_cuenta($codigo);
+									$alerta=[
+										"Alerta"=>"simple",
+										"Titulo"=>"Ocurrio un error inesperado",
+										"Texto"=>"No se ha podido registrar al Usuario",
+										"Tipo"=>"error"
+									];
+								}
+							/*Validación de Usuario en el sistema
+							//$consulta_id=mainModelo::ejecutar_consulta_simple("SELECT id FROM cuenta");
+							//$cantidad=$consulta_id->rowCount()+1;
 							//$codigo=mainModelo::generar_codigo_aleatorio("AC",5,$cantidad);//genero el codigo aleatorio
 							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
 
@@ -98,10 +133,10 @@
 								"Foto"=>$foto
 							];
 
-							$guardarCuenta=administradorModelo::agregar_usuarios_modelo($dataCuenta);
+							$guardarCuenta=administradorModelo::agregar_usuarios_modelo($dataCuenta);*/
 
 
-							if ($guardarCuenta->rowCount()>=1) {
+							/*if ($guardarCuenta->rowCount()>=1) {
 								$dataAdmin=[
 									"DNI"=>$dni,
 									"Nombre"=>$nombre,
@@ -136,7 +171,7 @@
 									"Texto"=>"No se ha podido registrar al Administrador!",
 									"Tipo"=>"error"
 								];
-							}
+							}*/
 							
 						}
 					}

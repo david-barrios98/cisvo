@@ -1,8 +1,6 @@
 <?php
-    //$peticionAjax=true;
+    $peticionAjax=true;
     require_once 'mainModelo.php';
-    //require_once 'configApp.php';
-
     class comboxMunicipio extends mainModelo{
 
         public function cagarMunicipios(){

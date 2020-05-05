@@ -1,7 +1,6 @@
 <?php
-    //$peticionAjax=true;
+    $peticionAjax=true;
     require_once 'mainModelo.php';
-    //require_once 'configApp.php';
 
     class comboxDepartamento extends mainModelo{
         protected $departamentos = "SELECT Dep_Codigo, Dep_Nombre FROM tbl_departamento";
