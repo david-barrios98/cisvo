@@ -98,7 +98,7 @@ $(document).ready(function(){
             $.ajax({
                 type: metodo,
                 url: accion,
-                data: formdata ? formdata : form.serialize(), //SE VALIDA UE LA VARIABLE fromdata VENGA DEIFINA 
+                data: formdata ? formdata : form.serialize(), //SE VALIDA UE LA VARIABLE fromdata VENGA DEIFINA
                 cache: false,
                 contentType: false,
                 processData: false,

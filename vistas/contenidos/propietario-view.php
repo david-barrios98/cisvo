@@ -82,6 +82,26 @@
 								  	<input class="form-control" type="date" name="nombre-reg" required="" maxlength="40">
 								</div>
 		    				</div>
+							<div class="col-xs-6">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Dirección</label>
+								  	<input class="form-control" type="text" name="direccion-reg" maxlength="170">
+								</div>
+		    				</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Departamento</label>				  	
+									<select class="form-control" name="departamento-reg" id="departamento-reg">
+									</select>
+								</div>
+							</div>
+		    				<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Ciudad/municipio</label>				  	
+									<select class="form-control" name="municipio-reg" id="municipio-reg">
+									</select>
+								</div>
+							</div>
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label class="control-label">Genero</label>
@@ -99,24 +119,6 @@
 									</div>
 								</div>
 		    				</div>
-							<div class="col-xs-6">
-								<div class="form-group label-floating">
-								  	<label class="control-label">Dirección</label>
-								  	<input class="form-control" type="text" name="direccion-reg" maxlength="170">
-								</div>
-		    				</div>
-							<div class="col-xs-6">
-								<div class="form-group label-floating">
-									<label class="control-label">Ciudad/Munipicio</label>
-									<select class="form-control tooltips-general" data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-										<option value="" disabled="" selected=""></option>
-										<option value="seccion">Barranquilla</option>
-										<option value="seccion">Soledad</option>
-										<option value="seccion">Malambo</option>
-										<option value="seccion">Pueblos</option>
-                                	</select>
-								</div>
-                            </div>
 		    			</div>
 		    		</div>
 		    	</fieldset>

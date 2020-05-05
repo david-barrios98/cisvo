@@ -79,14 +79,17 @@
 								  	<input class="form-control" type="text" name="direccion-reg" id="direccion-reg" maxlength="70">
 								</div>
 		    				</div>
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Departamento</label>				  	
+									<select class="form-control" name="departamento-reg" id="departamento-reg">
+									</select>
+								</div>
+							</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
-								  	<label class="control-label">Municipio</label>				  	
+								  	<label class="control-label">Ciudad/municipio</label>				  	
 									<select class="form-control" name="municipio-reg" id="municipio-reg">
-									<option value="" disabled="" selected=""></option>
-									  <option value="volvo">Soledad</option>
-								   	  <option value="volvo">Barranquilla</option>
-									  <option value="volvo">Bogotá</option>
 									</select>
 								</div>
 							</div>
@@ -94,14 +97,14 @@
 								<div class="form-group">
 									<label class="control-label">Genero</label>
 									<div class="radio radio-primary">
-										<label>
-											<input type="radio" name="genero-reg" id="masculino-reg" value="Masculino" checked="">
+										<label class="col-md-4">
+											<input type="radio" name="GENERO" id="optionsRadios1" value="Masculino" checked="">
 											<i class="zmdi zmdi-male-alt"></i> &nbsp; Masculino
 										</label>
 									</div>
 									<div class="radio radio-primary">
-										<label>
-											<input type="radio" name="genero-reg" id="femenino-reg" value="Femenino">
+										<label class="col-md-4">
+											<input type="radio" name="GENERO" id="optionsRadios2" value="Femenino">
 											<i class="zmdi zmdi-female"></i> &nbsp; Femenino
 										</label>
 									</div>

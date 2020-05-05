@@ -8,6 +8,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/css/main.css">
+	<link rel="Shortcut Icon" type="image/x-icon" href="<?php echo SERVERURL; ?>vistas/assets/img/logsena.png" />
 </head>
 <body>
 	<?php  
