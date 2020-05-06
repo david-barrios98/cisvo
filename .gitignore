@@ -7,6 +7,12 @@ bower_components
 .bower-registry
 .bower-tmp
 
+### Bower ###
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
 ### OSX ###
 # General
 .DS_Store
