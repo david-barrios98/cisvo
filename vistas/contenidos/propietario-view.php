@@ -28,7 +28,7 @@
 </div>
 
 <!-- Panel nueva categoria -->
-<div class="container-fluid">
+<div class="container-fluid" id="propietario">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVO PROPIETARIO/POSEEDOR</h3>
@@ -48,13 +48,12 @@
 							<div class="col-xs-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Rol de la persona</label>
-									<select class="form-control tooltips-general"  name="rol" onchange="if (this.value=='aprendiz')$.ajax({ success: function(){ $('#aprendiz').show(); $('#visitante').hide(); $('#funcionario').hide();}}); if (this.value=='visitante')$.ajax({ success: function(){$('#visitante').show(); $('#aprendiz').hide(); $('#funcionario').hide();}});
-									if (this.value=='funcionario')$.ajax({ success: function(){ $('#funcionario').show(); $('#visitante').hide(); $('#aprendiz').hide();}})" 
+									<select class="form-control tooltips-general"  id="rolpropietario-reg" name="rolpropietario-reg"
 									data-toggle="tooltip" data-placement="top" title="Elige la sección a la que pertenece el alumno">
-										<option value="blanco"></option>
-										<option value="aprendiz">Aprendiz</option>
-										<option value="funcionario">Funcionario</option>
-										<option value="visitante">Visitante</option>
+										<option value=""></option>
+										<option value="aprendiz">APRENDIZ</option>
+										<option value="funcionario">FUNCIONARIO</option>
+										<option value="visitante">VISITANTE</option>
                                 	</select>
 								</div>
                             </div>

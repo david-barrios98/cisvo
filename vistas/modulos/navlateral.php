@@ -14,7 +14,7 @@
 			</figure>
 			<ul class="full-box list-unstyled text-center">
 				<li>
-					<a href="<?php echo SERVERURL; ?>mydata//" title="Mis datos">
+					<a href="<?php echo SERVERURL; ?>mydata/" title="Mis datos">
 						<i class="zmdi zmdi-account-circle"></i>
 					</a>
 				</li>
@@ -48,16 +48,16 @@
 				</a>
 				<ul class="list-unstyled full-box">
 					<li>
-						<a href="<?php echo SERVERURL; ?>/usuario/"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios</a>
+						<a href="<?php echo SERVERURL; ?>usuario/"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Usuarios</a>
 					</li>
 					<li>
-						<a href="<?php echo SERVERURL; ?>/propietario/"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Propietario/Poseedor</a>
+						<a href="<?php echo SERVERURL; ?>propietario/"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Propietario/Poseedor</a>
 					</li>
 					<li>
-						<a href="<?php echo SERVERURL; ?>/objeto/"><i class="zmdi zmdi-folder zmdi-hc-fw"></i> Objetos</a>
+						<a href="<?php echo SERVERURL; ?>objeto/"><i class="zmdi zmdi-folder zmdi-hc-fw"></i> Objetos</a>
 					</li>
 					<li>
-						<a href="<?php echo SERVERURL; ?>vehiculo/vehiculo/"><i class="zmdi zmdi-directions-car zmdi-hc-fw"></i> Vehiculos</a>
+						<a href="<?php echo SERVERURL; ?>vehiculo/"><i class="zmdi zmdi-directions-car zmdi-hc-fw"></i> Vehiculos</a>
 					</li>
 				</ul>
 			</li>
@@ -72,7 +72,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="<?php echo SERVERURL; ?>solicitudes/solicitudes/">
+				<a href="<?php echo SERVERURL; ?>solicitudes/">
 					<i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Solicitudes
 				</a>
 			</li>

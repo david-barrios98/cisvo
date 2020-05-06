@@ -5,7 +5,7 @@
 </div>
 <div class="full-box text-center" style="padding: 30px 10px;">
 	<article class="full-box tile" >
-		<a href="<?php echo SERVERURL; ?>/usuario/">
+		<a href="<?php echo SERVERURL; ?>usuario/">
 			<div class="full-box tile-title text-center text-titles text-uppercase">
 				Usuarios
 			</div>
@@ -19,7 +19,7 @@
 		</a>
     </article>
 	<article class="full-box tile">
-		<a href="<?php echo SERVERURL; ?>/propietario/">
+		<a href="<?php echo SERVERURL; ?>propietario/">
 			<div class="full-box tile-title text-center text-titles text-uppercase">
 				Propietarios/Poseedores
 			</div>
@@ -33,7 +33,7 @@
 		</a>
 	</article>
 	<article class="full-box tile">
-		<a href="<?php echo SERVERURL; ?>/objeto/">
+		<a href="<?php echo SERVERURL; ?>objeto/">
 			<div class="full-box tile-title text-center text-titles text-uppercase">
 				Objetos
 			</div>
@@ -47,7 +47,7 @@
 		</a>
     </article>
     <article class="full-box tile">
-		<a href="<?php echo SERVERURL; ?>vehiculo/vehiculo/">
+		<a href="<?php echo SERVERURL; ?>vehiculo/">
 			<div class="full-box tile-title text-center text-titles text-uppercase">
 				Vehiculos
 			</div>
@@ -93,7 +93,7 @@
 		</a>
     </article>
     <article class="full-box tile">
-		<a href="<?php echo SERVERURL; ?>solicitudes/solicitudes/">
+		<a href="<?php echo SERVERURL; ?>solicitudes/">
 			<div class="full-box tile-title text-center text-titles text-uppercase">
 				Solicitudes
 			</div>

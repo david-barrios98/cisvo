@@ -69,10 +69,26 @@
 		    		<legend><i class="zmdi zmdi-assignment-o"></i> &nbsp; Detalle de solicitud</legend>
 		    		<div class="container-fluid">
 		    			<div class="row">
+							<!--Combo box tipo de solicitud-->
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Tipo de solicitud *</label>				  	
+									<select class="form-control" name ="tiposolicitud-reg" id="tiposolicitud-reg">
+									</select>
+								</div>
+							</div>
+							<!--Combo box objeto o vehiculo-->
+							<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Selecione el objeto o vehiculo *</label>				  	
+									<select class="form-control" name ="objeveh-reg" id="objeveh-reg">
+									</select>
+								</div>
+							</div>
 		    				<div class="col-xs-12 col-sm-12">
 					    		<div class="form-group label-floating">
 								  	<label class="control-label">Ingrese la solucitud, petición o queja*</label>
-								  	<input class="form-control" type="textarea" name="usuario-reg" required="">
+								  	<input class="form-control" type="textarea" name="descripsolicitud-reg" id="descripsolicitud-reg" required="">
 								</div>
 		    				</div>
 		    			</div>

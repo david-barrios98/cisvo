@@ -62,14 +62,14 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Marca *</label>				  	
-									<select class="form-control especialidad-reg" name="marca-reg" id="marca-reg">
+									<select class="form-control" name="marca-reg" id="marca-reg">
 									</select>
 								</div>
 							</div>
                             <div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Tipo *</label>				  	
-									<select class="form-control especialidad-reg" name="tipo-reg" id="tipo-reg">
+									<select class="form-control" name="tipo-reg" id="tipo-reg">
 									</select>
 								</div>
 							</div>
