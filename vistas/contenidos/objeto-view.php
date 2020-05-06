@@ -55,29 +55,21 @@
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
-								  	<label class="control-label">Modelo *</label>				  	
-									<select class="form-control" name ="MODELOOBJETO" id="MODELOOBJETO">
-                                      <option value=""></option>
-                                      <option value="">2015</option>
-								   	  <option value="">2014</option>
-									  <option value="">2013</option>
+								  	<label class="control-label">Modelo *</label>
+								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="modelo-reg" id="modelo-reg" maxlength="4">
+								</div>
+		    				</div>
+		    				<div class="col-xs-12 col-sm-6">
+								<div class="form-group label-floating">
+									<label class="control-label">Marca *</label>				  	
+									<select class="form-control especialidad-reg" name="marca-reg" id="marca-reg">
 									</select>
 								</div>
 							</div>
-		    				<div class="col-xs-12 col-sm-6">
-						    	<div class="form-group label-floating">
-								  	<label class="control-label">Marca *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="MARCAOBJETO" required="" maxlength="50">
-								</div>
-		    				</div>
                             <div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
-								  	<label class="control-label">Tipo *</label>				  	
-									<select class="form-control tooltips-general" data-toggle="tooltip" data-placement="top" name ="TIPOOBJETO" id="TIPOOBJETO">
-                                      <option value=""></option>
-                                      <option value="Construcción">Construcción</option>
-								   	  <option value="Electronico">Electronico</option>
-									  <option value="Cocina">Cocina</option>
+									<label class="control-label">Tipo *</label>				  	
+									<select class="form-control especialidad-reg" name="tipo-reg" id="tipo-reg">
 									</select>
 								</div>
 							</div>

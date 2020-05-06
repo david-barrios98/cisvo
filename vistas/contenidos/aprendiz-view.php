@@ -4,20 +4,22 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group label-floating">
-                    <label class="control-label">Centro *</label>
-                    <input class="form-control" type="text" name="telefono-reg" maxlength="15">
+                    <label class="control-label">Centro *</label>				  	
+                    <select class="form-control" name="centro-reg" id="centro-reg">
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group label-floating">
-                    <label class="control-label">Especialidad *</label>
-                    <input class="form-control" type="text" name="telefono-reg" maxlength="15">
+                    <label class="control-label">Especialidad *</label>				  	
+                    <select class="form-control especialidad-reg" name="especialidad-reg" id="especialidad-reg">
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group label-floating">
                     <label class="control-label">Ficha *</label>
-                    <input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-reg" maxlength="15">
+                    <input pattern="[0-9+]{1,15}" class="form-control" type="text" name="ficha-reg" maxlength="20">
                 </div>
             </div>
         </div>

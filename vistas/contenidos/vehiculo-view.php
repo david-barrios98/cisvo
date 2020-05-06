@@ -57,10 +57,11 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Tipo de vehiculo</label>				  	
-									<select class="form-control" name ="TIPOVEHICULO" id="TIPOVEHICULO">
-									  <option value="volvo">Camión</option>
-								   	  <option value="volvo">Moto</option>
-									  <option value="volvo">Aulamóvil</option>
+									<select class="form-control" name ="tipo_vehiculo-reg" id="tipo_vehiculo-reg">
+										<option value=""></option>
+										<option value="8">Moto</option>
+										<option value="7">Carro</option>
+										<option value="9">Bicicleta</option>
 									</select>
 								</div>
 							</div>
@@ -68,10 +69,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Marca de vehiculo</label>				  	
-									<select class="form-control" name ="MARCA" id="MARCA">
-									  <option value="volvo">Chevrolet</option>
-								   	  <option value="volvo">Mazda</option>
-									  <option value="volvo">Kia</option>
+									<select class="form-control" name ="marca_vehiculo-reg" id="marca_vehiculo-reg">
 									</select>
 								</div>
 							</div>

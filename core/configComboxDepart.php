@@ -23,7 +23,6 @@
     }
 
     $ins = new comboxDepartamento();
-    $cont = $ins->cagarDepartamentos();
     echo $ins->cagarDepartamentos();
     
     
