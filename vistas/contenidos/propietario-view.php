@@ -78,7 +78,7 @@
 							<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Fecha de nacimiento *</label>
-								  	<input class="form-control" type="date" name="nombre-reg" required="" maxlength="40">
+								  	<input class="form-control" type="date" name="nombre-reg" required="" maxlength="40" value="<?php echo date("Y-m-d");?>">
 								</div>
 		    				</div>
 							<div class="col-xs-6">

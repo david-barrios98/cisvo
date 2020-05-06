@@ -45,20 +45,20 @@
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
-								  	<label class="control-label">Nombre(s) de la persona *</label>
+								  	<label class="control-label">Nombre(s) de la persona </label>
 								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="nombre-reg" required="" maxlength="40">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
-								  	<label class="control-label">Apellido(s) de la persona *</label>
+								  	<label class="control-label">Apellido(s) de la persona </label>
 								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="nombre-reg" required="" maxlength="40">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
-						    	<div class="form-group label-floating">
-								  	<label class="control-label">Fecha de nacimiento *</label>
-								  	<input class="form-control" type="date" name="nombre-reg" required="" maxlength="40">
+								<div class="form-group label-floating">
+								  	<label class="control-label">Telefono </label>
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="telefono-reg" required="" maxlength="40">
 								</div>
 		    				</div>
 		    			</div>

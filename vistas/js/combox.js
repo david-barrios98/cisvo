@@ -150,7 +150,7 @@ $(document).ready(function(){
     /*.fail(function(){
       alert('Hubo un errror al cargar las departamentos')
     })*/
-    $('#tipovehiculo-reg').on('change', function(){
+    $('#').on('change', function(){
       var id = $('dni-reg').val()
       $.ajax({
         type: 'POST',

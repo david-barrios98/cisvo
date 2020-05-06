@@ -70,7 +70,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Fecha Nacimiento</label>
-								  	<input  class="form-control" type="date" name="fnaci-reg" id="fnaci-reg">
+								  	<input  class="form-control" type="date" name="fnaci-reg" id="fnaci-reg" value="<?php echo date("Y-m-d");?>">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">

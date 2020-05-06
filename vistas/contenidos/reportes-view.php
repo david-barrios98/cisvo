@@ -26,13 +26,13 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Desde</label>
-								  	<input class="form-control" type="datetime-local" name="desde" >
+								  	<input class="form-control" type="datetime" name="desde" value="<?php echo date("Y-m-d");?>">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Hasta</label>
-								  	<input class="form-control" type="datetime-local" name="hasta" >
+								  	<input class="form-control" type="datetime" name="hasta" value="<?php echo date("Y-m-d");?>">
 								</div>
 		    				</div>
 	    				</div>
