@@ -1,5 +1,5 @@
 <?php
-	$peticionAjax=true;
+	/*$peticionAjax=true;
 	
 	require_once "../core/configGeneral.php";
 
@@ -17,5 +17,5 @@
 		session_destroy();
 		echo '<script> window.location.href="'.SERVERURL.'login/"</script>';
 	}
-
+*/
 	

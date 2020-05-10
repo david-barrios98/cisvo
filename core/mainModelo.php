@@ -14,8 +14,8 @@
 		}
 		
 		/*funcion para ejecutar consultas sencillas */
-		protected function ejecutar_consulta_simple($consulta){
-			$respuesta=mainModelo::conectar_bd()->prepare($consulta);
+		protected function ejecutar_consulta_simple($parametro){
+			$respuesta=mainModelo::conectar_bd()->prepare("SELECT Usu_Doc FROM tbl_usuario WHERE Usu_Doc='$parametro'");
 			$respuesta->execute();
 			return $respuesta;
 		}

@@ -36,7 +36,7 @@
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; DATOS DEL USUARIO</h3>
 		</div>
 		<div class="panel-body">
-			<form action="<?php echo SERVERURL?>ajax/administradorAjax.php" method="POST" 
+			<form action="<?php echo SERVERURL?>ajax/usuarioAjax.php" method="POST" 
 			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" 
 			 enctype="multipart/form-data" > 
 		    	<fieldset>

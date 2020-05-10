@@ -46,7 +46,7 @@
 				];
 			}else{
 				/*Validación de documento en el sistema*/
-				$consulta_doc=mainModelo::ejecutar_consulta_simple("SELECT Usu_Doc FROM tbl_usuario WHERE Usu_Doc='$dni'");
+				$consulta_doc=mainModelo::ejecutar_consulta_simple($dni);
 				if ($consulta_doc->rowCount()>=1) {
 					$alerta=[
 						"Alerta"=>"simple",

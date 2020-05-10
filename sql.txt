@@ -1,0 +1,13 @@
+DELIMITER $$
+
+CREATE
+    /*[DEFINER = { user | CURRENT_USER }]*/
+    PROCEDURE `cisvo`.`registro_usuarios`( id BIGINT, nomb VARCHAR(50), apell VARCHAR(50) , sexo CHAR (1) , fn DATE ,  dir VARCHAR(80),
+    mun INT , correo VARCHAR(50), cel BIGINT, clave VARCHAR(50),  rol CHAR (1))
+    
+    BEGIN
+	INSERT INTO tbl_usuario VALUES ( id,UPPER(nomb), UPPER(apell), UPPER(sexo), fn, UPPER(dir),
+	mun, UPPER(correo), cel, clave, UPPER(rol), 'A', NOW());
+    END$$
+
+DELIMITER ;
