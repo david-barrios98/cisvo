@@ -5,9 +5,6 @@
 		require_once "./core/mainModelo.php";
 	}
 	
-	/**
-	 * 
-	 */
 	class usuarioModelo extends mainModelo{
         
         

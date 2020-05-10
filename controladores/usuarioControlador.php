@@ -20,15 +20,12 @@
 			$apellido=mainModelo::limpiar_cadena($_POST['apellido-reg']);
 			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
 			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
-
-			//$usuario=mainModelo::limpiar_cadena($_POST['usuario-reg']);
 			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
 			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
 			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
 			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
 			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
 			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
-			//$privilegio=mainModelo::limpiar_cadena($_POST['optionsPrivilegio']);
 
 			/*Foto segun el sexo
 			if ($genero=="Masculino") {
@@ -98,81 +95,22 @@
 							];
 							$guardarAdmin=usuarioModelo::agregar_usuarios($dataAdmin);
 
-								if ($guardarAdmin->rowCount()>=1) {
-									$alerta=[
-										"Alerta"=>"limpiar",
-										"Titulo"=>"Administrador registrado",
-										"Texto"=>"Registro exitoso!",
-										"Tipo"=>"success"
-									];
-								}else{
-									//mainModelo::eliminar_cuenta($codigo);
-									$alerta=[
-										"Alerta"=>"simple",
-										"Titulo"=>"Ocurrio un error inesperado",
-										"Texto"=>"No se ha podido registrar al Usuario",
-										"Tipo"=>"error"
-									];
-								}
-							/*Validación de Usuario en el sistema
-							//$consulta_id=mainModelo::ejecutar_consulta_simple("SELECT id FROM cuenta");
-							//$cantidad=$consulta_id->rowCount()+1;
-							//$codigo=mainModelo::generar_codigo_aleatorio("AC",5,$cantidad);//genero el codigo aleatorio
-							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
-
-							$dataCuenta=[
-								"Id"=>$dni,
-								"Nombre"=>$nombre,
-								"Apellido"=>$apellido,
-								"Telefono"=>$telefono,
-								"Email"=>$email,
-								"Estado"=>"A",
-								"Direccion"=>$direccion,
-								"Tipo"=>"Administrador",
-								"Genero"=>$genero,
-								"Foto"=>$foto
-							];
-
-							$guardarCuenta=administradorModelo::agregar_usuarios_modelo($dataCuenta);*/
-
-
-							/*if ($guardarCuenta->rowCount()>=1) {
-								$dataAdmin=[
-									"DNI"=>$dni,
-									"Nombre"=>$nombre,
-									"Apellido"=>$apellido,
-									"Telefono"=>$telefono,
-									"Direccion"=>$direccion,
-									"Codigo"=>$codigo
+							if ($guardarAdmin->rowCount()>=1) {
+								$alerta=[
+									"Alerta"=>"limpiar",
+									"Titulo"=>"Administrador registrado",
+									"Texto"=>"Registro exitoso!",
+									"Tipo"=>"success"
 								];
-
-								$guardarAdmin=administradorModelo::agregar_administrador_modelo($dataAdmin);
-
-								if ($guardarAdmin->rowCount()>=1) {
-									$alerta=[
-										"Alerta"=>"limpiar",
-										"Titulo"=>"Administrador registrado",
-										"Texto"=>"Registro exitoso!",
-										"Tipo"=>"success"
-									];
-								}else{
-									mainModelo::eliminar_cuenta($codigo);
-									$alerta=[
-										"Alerta"=>"simple",
-										"Titulo"=>"Ocurrio un error inesperado",
-										"Texto"=>"No se ha podido registrar al Administrador!",
-										"Tipo"=>"error"
-									];
-								}	
-							} else {
+							}else{
+								//mainModelo::eliminar_cuenta($codigo);
 								$alerta=[
 									"Alerta"=>"simple",
 									"Titulo"=>"Ocurrio un error inesperado",
-									"Texto"=>"No se ha podido registrar al Administrador!",
+									"Texto"=>"No se ha podido registrar al Usuario",
 									"Tipo"=>"error"
 								];
-							}*/
-							
+							}
 						}
 					}
 				}
