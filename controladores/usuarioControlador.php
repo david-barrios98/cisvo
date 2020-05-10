@@ -81,7 +81,7 @@
 								"Tipo"=>"error"
 							];
 						}else{
-							//$clave=mainModelo::encryption($pass1);//Encripto la contraseña
+							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
 							$dataAdmin=[
 								"DNI"=>$dni,
 								"Nombre"=>$nombre,
@@ -91,7 +91,7 @@
 								"Sexo"=>$genero,
 								"Fnacimiento"=>$fnacimiento,
 								"Municipio"=>$municipio,
-								"Clave"=>$pass1,
+								"Clave"=>$clave,
 								//"Estado"=>'A',
 								"Rol"=>'A',
 								"Correo"=>$email
