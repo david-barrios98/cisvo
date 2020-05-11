@@ -1,4 +1,5 @@
 <?php
+
 	if($peticionAjax){
 		require_once "../modelos/usuarioModelo.php";
 	}else{
@@ -6,10 +7,11 @@
 	}
 	
 	/**
-	 * 
+	 * @return $alerta verifica los posibles errores o confirmación de registro
 	 */
 	class usuarioControlador extends usuarioModelo{
 		
+		//FUNCION PARA AGREGAR USUARIOS
 		public function agregar_usuario_controlador(){
 			/*Captura de datos del formulario admin-view, En variables, 
 			pasando por una funcion llamada limpiar_cadena(archivo mainModelo)
@@ -117,4 +119,136 @@
 			}
 			return mainModelo::sweet_alert($alerta);
 		}
+
+		//FUNCION PARA CONFIGURAR TABLA
+		/**
+		 * @param $pagina pagina actual
+		 * @param $regxpagina numero de registros que se mostraran
+		 * @param $id_usuario usuario que esta dentro del sistema. Esto para no mostrar los datos en la tabla
+		 * del usuario esta manipulando el sistema
+		 * @return $tabla retorna la estructura de la tabla con su consulta 
+		 */
+		public function config_tabla_controlador($pagina, $regxpagina){
+			//se limpia la cadena
+			$pagina=mainModelo::limpiar_cadena($pagina);
+			$regxpagina=mainModelo::limpiar_cadena($regxpagina);
+			//$id_usuario=mainModelo::limpiar_cadena($id_usuario;
+			$tabla="";
+
+			$pagina = isset($pagina) ? (int)$pagina : 1;  //pagina actual
+			$inicio = ($pagina > 1) ? ($pagina * $regxpagina - $regxpagina) : 0 ;  //indice de Registro a cargar por pagina
+			$conexion = mainModelo::conectar_bd();
+			$datos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_usuario WHERE Usu_Rol !='A' ORDER BY Usu_Nombre ASC LIMIT $inicio, $regxpagina");
+			$datos->execute();
+			$datos = $datos->fetchAll();
+			$total_registros = $conexion->query('SELECT FOUND_ROWS() as total');
+			$total_registros = $total_registros->fetch()['total'];  //Devuelve un registro (50)
+			$numeroPaginas = ceil($total_registros / $regxpagina);   //Redondear fracciones hacia arriba
+
+			$tabla.= '<div class="table-responsive">
+			<table class="table table-striped table-bordered text-center" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="text-center" scope="col">N°</th>
+						<th class="text-center" scope="col">DOCUMENTO</th>
+						<th class="text-center" scope="col">NOMBRE(S)</th>
+						<th class="text-center" scope="col">APELLIDO(S)</th>
+						<th class="text-center" scope="col">SEXO</th>
+						<th class="text-center" scope="col">FECHA NACIMIENTO</th>
+						<th class="text-center" scope="col">MUNICIPIO</th>
+						<th class="text-center" scope="col">EMAIL</th>
+						<th class="text-center" scope="col">DIRECCION</th>
+						<th class="text-center" scope="col">TELEFONO</th>
+						<th class="text-center" scope="col">ROL</th>
+						<th class="text-center" scope="col">ESTADO</th>
+						<th class="text-center" scope="col">REGISTRO</th>
+						<th class="text-center" scope="col">ACTUALIZAR</th>
+						<th class="text-center" scope="col">ELIMINAR</th>
+					</tr>
+				</thead>
+				<tbody>';
+
+				if($total_registros >= 1 && $pagina <= $numeroPaginas){
+					$cont = $inicio+1;
+
+					foreach($datos as $columna){
+						$tabla.= '
+							<tr>
+								<td scope="col">'.$cont.'</td>
+								<td scope="col">'.$columna['Usu_Doc'].'</td>
+								<td scope="col">'.$columna['Usu_Nombre'].'</td>
+								<td scope="col">'.$columna['Usu_Apellido'].'</td>
+								<td scope="col">'.$columna['Usu_Genero'].'</td>
+								<td scope="col">'.$columna['Usu_FechaNac'].'</td>
+								<td scope="col">'.$columna['Usu_Direccion'].'</td>
+								<td scope="col">'.$columna['Usu_Municipio'].'</td>
+								<td scope="col">'.$columna['Usu_Correo'].'</td>
+								<td scope="col">'.$columna['Usu_Celular'].'</td>
+								<td scope="col">'.$columna['Usu_Rol'].'</td>
+								<td scope="col">'.$columna['Usu_Estado'].'</td>
+								<td scope="col">'.$columna['Usu_Registro'].'</td>
+								<td>
+									<a href="#!" class="btn btn-success btn-raised btn-xs">
+										<i class="zmdi zmdi-border-color"></i>
+									</a>
+								</td>
+								<td>
+									<form>
+										<button type="submit" class="btn btn-danger btn-raised btn-xs">
+											<i class="zmdi zmdi-delete"></i>
+										</button>
+									</form>
+								</td>
+							</tr>
+						';
+						$cont ++;
+					}
+				}else{
+					if($total_registros>= 1){
+						$tabla.= '<tr>
+							<td colspan="15">
+								<a href="'.SERVERURL.'usuariolist/" class="btn btn-success btn-raised btn-xs"> Haga clik para refrescar la tabla </a>
+							</td>
+						</tr>';
+					}else{
+						$tabla.= '<tr>
+							<td colspan="15"> no hay registos de usuarios</td>
+						</tr>';
+					}
+				}
+
+			$tabla.= "</tbody>
+			</table>
+			</div>";
+
+			if($total_registros >= 1 && $pagina <= $numeroPaginas){
+				$tabla.= '<nav class="text-center">
+				<ul class="pagination pagination-sm">';
+
+				if($pagina==1){
+					$tabla.= '<li class="disabled"><a><-</a></li>';
+				}else{
+					$tabla.= '<li><a href="'.SERVERURL.'usuariolist/'.($pagina-1).'/"><-</a></li>';
+				}
+				for($i = 1; $i <= $numeroPaginas; $i++){ //Identifica la pagina Activa
+					if ($pagina === $i) { 
+						$tabla.= '<li class="active"><a href="'.SERVERURL.'usuariolist/'.$i.'/">'.$i.'</a></li>';
+					} else {
+						$tabla.= '<li><a href="'.SERVERURL.'usuariolist/'.$i.'/">'.$i.'</a></li>';
+					}
+				}
+				if($pagina==$numeroPaginas){
+					$tabla.= '<li class="disabled"><a>-></a></li>';
+				}else{
+					$tabla.= '<li><a href="'.SERVERURL.'usuariolist/'.($pagina+1).'/">-></a></li>';
+				}
+				
+				$tabla.= '</ul>
+				</nav>';
+			}
+
+			return $tabla; 
+		}
+
 	}
+	
