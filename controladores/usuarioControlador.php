@@ -92,10 +92,10 @@
 								"Municipio"=>$municipio,
 								"Clave"=>$clave,
 								//"Estado"=>'A',
-								"Rol"=>'A',
+								"Rol"=>'U',
 								"Correo"=>$email
 							];
-							$guardarAdmin=usuarioModelo::agregar_usuarios($dataAdmin);
+							$guardarAdmin=usuarioModelo::agregar_usuarios_modelo($dataAdmin);
 
 							if ($guardarAdmin->rowCount()>=1) {
 								$alerta=[
@@ -105,7 +105,7 @@
 									"Tipo"=>"success"
 								];
 							}else{
-								//mainModelo::eliminar_cuenta($codigo);
+								
 								$alerta=[
 									"Alerta"=>"simple",
 									"Titulo"=>"Ocurrio un error inesperado",
@@ -140,8 +140,10 @@
 			$conexion = mainModelo::conectar_bd();
 			$datos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_usuario WHERE Usu_Rol !='A' ORDER BY Usu_Nombre ASC LIMIT $inicio, $regxpagina");
 			$datos->execute();
+			//$datos= usuarioModelo::cargar_tabla_modelo($inicio, $regxpagina);
 			$datos = $datos->fetchAll();
 			$total_registros = $conexion->query('SELECT FOUND_ROWS() as total');
+			//$total_registros = usuarioModelo::total_registros_tabla();
 			$total_registros = $total_registros->fetch()['total'];  //Devuelve un registro (50)
 			$numeroPaginas = ceil($total_registros / $regxpagina);   //Redondear fracciones hacia arriba
 
@@ -156,12 +158,12 @@
 						<th class="text-center" scope="col">SEXO</th>
 						<th class="text-center" scope="col">FECHA NACIMIENTO</th>
 						<th class="text-center" scope="col">MUNICIPIO</th>
-						<th class="text-center" scope="col">EMAIL</th>
 						<th class="text-center" scope="col">DIRECCION</th>
+						<th class="text-center" scope="col">EMAIL</th>
 						<th class="text-center" scope="col">TELEFONO</th>
 						<th class="text-center" scope="col">ROL</th>
 						<th class="text-center" scope="col">ESTADO</th>
-						<th class="text-center" scope="col">REGISTRO</th>
+						<th class="text-center" scope="col">FECHA DE REGISTRO</th>
 						<th class="text-center" scope="col">ACTUALIZAR</th>
 						<th class="text-center" scope="col">ELIMINAR</th>
 					</tr>
@@ -180,23 +182,27 @@
 								<td scope="col">'.$columna['Usu_Apellido'].'</td>
 								<td scope="col">'.$columna['Usu_Genero'].'</td>
 								<td scope="col">'.$columna['Usu_FechaNac'].'</td>
-								<td scope="col">'.$columna['Usu_Direccion'].'</td>
 								<td scope="col">'.$columna['Usu_Municipio'].'</td>
+								<td scope="col">'.$columna['Usu_Direccion'].'</td>
 								<td scope="col">'.$columna['Usu_Correo'].'</td>
 								<td scope="col">'.$columna['Usu_Celular'].'</td>
 								<td scope="col">'.$columna['Usu_Rol'].'</td>
 								<td scope="col">'.$columna['Usu_Estado'].'</td>
 								<td scope="col">'.$columna['Usu_Registro'].'</td>
 								<td>
-									<a href="#!" class="btn btn-success btn-raised btn-xs">
+									<a href="'.SERVERURL.'usuario/?usuario='.mainModelo::encryption($columna['Usu_Doc']).'" class="btn btn-success btn-raised btn-xs">
 										<i class="zmdi zmdi-border-color"></i>
 									</a>
 								</td>
 								<td>
-									<form>
+									<form action="'.SERVERURL.'ajax/usuarioAjax.php" method="POST" 
+									data-form="delete" class="FormularioAjax" name="FormularioAjax" autocomplete="off" 
+									enctype="multipart/form-data">
+										<input type="hidden" name="id-usuario" id="id-usuario" value="'.mainModelo::encryption($columna['Usu_Doc']).'">
 										<button type="submit" class="btn btn-danger btn-raised btn-xs">
 											<i class="zmdi zmdi-delete"></i>
 										</button>
+										<div class="RespuestaAjax"></div>
 									</form>
 								</td>
 							</tr>
@@ -248,6 +254,67 @@
 			}
 
 			return $tabla; 
+		}
+
+		public function eliminar_usuario_controlador(){
+			$id = mainModelo::decryption($_POST['id-usuario']);
+			$id =  mainModelo::limpiar_cadena($id);
+
+			$query1= usuarioModelo::ejecutar_consulta_usuario($id);
+			//$usuario = $query1->fetch();
+			
+			if($query1->rowCount()>=1){
+				$eliminacion = usuarioModelo::eliminar_usuario_modelo($id);
+				if($eliminacion->rowCount()>=1){
+					$alerta=[
+						"Alerta"=>"recargar",
+						"Titulo"=>"Usuario eliminado",
+						"Texto"=>"la eliminación realizó con exito",
+						"Tipo"=>"success"
+					];
+				}else{
+					$alerta=[
+						"Alerta"=>"simple",
+						"Titulo"=>"Ocurrio un error inesperado",
+						"Texto"=>"No se puedo eliminar usuario, problema de eliminación",
+						"Tipo"=>"error"
+					];
+				}
+			}else{
+				$alerta=[
+					"Alerta"=>"simple",
+					"Titulo"=>"Ocurrio un error inesperado",
+					"Texto"=>"No pudo eliminar, usuario no encontrado",
+					"Tipo"=>"error"
+				];
+			}
+			return mainModelo::sweet_alert($alerta);
+		}
+
+		public function datos_usuario_controlador($tipo, $id_usu){
+			$id_usu = mainModelo::decryption($id_usu);
+			$tipo =  mainModelo::limpiar_cadena($tipo);
+
+			return usuarioModelo::datos_usuario_modelo($tipo, $id_usu);
+			/*$id = mainModelo::decryption($_POST['id-usuario']);
+			$id =  mainModelo::limpiar_cadena($id);
+
+			$nombre=mainModelo::limpiar_cadena($_POST['nombre-reg']);
+			$apellido=mainModelo::limpiar_cadena($_POST['apellido-reg']);
+			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
+			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
+			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
+			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
+			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
+			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
+			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
+			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
+
+			$consulta= usuarioModelo::ejecutar_consulta_usuario($id);
+			$array = $consulta->fetch();
+			if($id != $array['Usu_Doc']){
+
+			}else*/
 		}
 
 	}

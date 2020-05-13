@@ -118,7 +118,7 @@
 					<legend><i class="zmdi zmdi-assignment-o"></i> &nbsp; Datos de Contacto</legend>
 		    		<div class="container-fluid">
 		    			<div class="row">
-						<div class="col-xs-12 col-sm-6">
+							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Teléfono</label>
 								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-reg"  id="telefono-reg" maxlength="15">
@@ -149,6 +149,36 @@
 								  	<input class="form-control" type="password" name="password2-reg" id="password2-reg" required="" maxlength="40">
 								</div>
 		    				</div>
+		    		</div>
+		    	</fieldset>
+				<br>
+		    	<fieldset>
+		    		<legend><i class="zmdi zmdi-star"></i> &nbsp; Roles</legend>
+		    		<div class="container-fluid">
+		    			<div class="row">
+		    				<div class="col-xs-12 col-sm-6">
+					    		<p class="text-left">
+			                        <div class="label label-success">Rol 1</div> Administrador
+			                    </p>
+			                    <p class="text-left">
+			                        <div class="label label-primary">Rol 2</div> Usuario 
+			                    </p>
+		    				</div>
+		    				<div class="col-xs-12 col-sm-6">
+								<div class="radio radio-primary">
+									<label>
+										<input type="radio" name="rol-reg" id="rol1-reg" value="A">
+										<i class="zmdi zmdi-star"></i> &nbsp; Rol 1 Control total del sistema
+									</label>
+								</div>
+								<div class="radio radio-primary">
+									<label>
+										<input type="radio" name="rol-reg" id="rol2-reg" value="U">
+										<i class="zmdi zmdi-star"></i> &nbsp; Rol 2 Sin permiso a reportes y registro de usuarios
+									</label>
+								</div>
+		    				</div>
+		    			</div>
 		    		</div>
 		    	</fieldset>
 		    	<br>

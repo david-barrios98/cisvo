@@ -3,6 +3,11 @@
 	  <h1 class="text-titles">Control de Ingreso y Salida de Vehiculos y Objetos <small>Inicio</small></h1>
 	</div>
 </div>
+<?php 
+	require_once "./controladores/usuarioControlador.php";
+	$ins = new usuarioControlador();
+	$conteo= $ins->datos_usuario_controlador("conteo", 0);
+?>
 <div class="full-box text-center" style="padding: 30px 10px;">
 	<article class="full-box tile" >
 		<a href="<?php echo SERVERURL; ?>usuario/">
@@ -13,7 +18,7 @@
 				<i class="zmdi zmdi-account"></i>
 			</div>
 			<div class="full-box tile-number text-titles">
-				<p class="full-box">7</p>
+				<p class="full-box"><?php echo $conteo->rowCount(); ?></p>
 				<small>Registros</small>
         	</div>
 		</a>

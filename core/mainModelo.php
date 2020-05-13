@@ -131,7 +131,7 @@
 							text:	'".$datos['Texto']."',
 							type:	'".$datos['Tipo']."',
 							confirmButtonText:	'Aceptar'
-						}).then(function ()){
+						}).then(function (){
 							location.reload();
 						});
 					</script>
