@@ -27,6 +27,22 @@
 			$sql->bindParam(":Sexo",$datos['Sexo']);
 			$sql->bindParam(":Rol",$datos['Rol']);
 			$sql->execute();
+
+			$email_to = $datos['Correo'];
+			$email_subject = "Confirma tu email Photogram";
+			$email_from = "reply.localhost.com";
+
+			$email_message = "Hola ".$datos['Nombre'].", para poder disfrutar de nuestro sitio web, debes confirmar tu email\n\n";
+			$email_message .= "Ingresa el siguiente codigo para confirmar tu email\n\n";
+			//$email_message .= "Codigo: " . $aleatorio . "\n";
+
+
+			// Ahora se envía el e-mail usando la función mail() de PHP
+			$headers = 'From: '.$email_from."\r\n".
+			'Reply-To: '.$email_from."\r\n" .
+			'X-Mailer: PHP/' . phpversion();
+			mail($email_to, $email_subject, $email_message, $headers);
+
 			return $sql;
 		}
 

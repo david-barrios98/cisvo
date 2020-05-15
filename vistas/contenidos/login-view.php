@@ -1,5 +1,5 @@
 <div class="full-box login-container cover">
-	<form action="" method="POST" autocomplete="off" class="logInForm">
+	<form action="login" method="POST" autocomplete="off" class="logInForm">
 		<p class="text-center text-muted"><i class="zmdi zmdi-account-circle zmdi-hc-5x"></i></p>
 		<p class="text-center text-muted text-uppercase">Inicia sesión con tu cuenta </p>
 		<div class="form-group label-floating">
@@ -9,7 +9,7 @@
 		</div>
 		<div class="form-group label-floating">
 		  <label class="control-label" for="UserPass">Contraseña</label>
-		  <input required="" class="form-control" id="UserPass" name="clave" type="password" style="color: #FFF;">
+		  <input required="" class="form-control" id="UserPass" name="password" type="password" style="color: #FFF;">
 		  <p class="help-block">Escribe tú contraseña</p>
 		</div>
 		<div class="form-group text-center">
@@ -17,3 +17,11 @@
 		</div>
 	</form>
 </div>
+<?php
+  
+  if(isset($_POST['usuario']) && isset($_POST['password'])){
+	require_once "./controladores/loginControlador.php";
+	$login = new loginControlador();
+	echo $login->iniciar_sesion_controlador();
+  }
+?>

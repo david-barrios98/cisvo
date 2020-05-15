@@ -13,44 +13,14 @@
 			return $enlace;		
 		}
 
-		/*funcion para añadir cuentas en la bd con un array */
-		protected function agregar_cuenta($datos){
-			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO cuenta(CuentaCodigo,CuentaPrivilegio,CuentaUsuario,CuentaClave,CuentaEmail,CuentaEstado,CuentaTipo,CuentaGenero,CuentaFoto) VALUES(:Codigo,:Privilegio,:Usuario,:Clave,:Email,:Estado,:Tipo,:Genero,:Foto)");
+		/*funcion para generar codigos de forma aleatoria*/
+		protected function generar_codigo_aleatorio($letra,$longitud,$num){
+			for($i=1;$i<=$longitud;$i++){
+				$numero= rand(0,9);/*funcion para generar numero aleatorio*/
+				$letra.= $numero;
+			}
 
-			/*Funcion para vincular un parametro al nombre de la variable espcificada */
-			$sql->bindParam(":Codigo",$datos['Codigo']);
-			$sql->bindParam(":Privilegio",$datos['Privilegio']);
-			$sql->bindParam(":Usuario",$datos['Usuario']);
-			$sql->bindParam(":Clave",$datos['Clave']);
-			$sql->bindParam(":Email",$datos['Email']);
-			$sql->bindParam(":Estado",$datos['Estado']);
-			$sql->bindParam(":Tipo",$datos['Tipo']);
-			$sql->bindParam(":Genero",$datos['Genero']);
-			$sql->bindParam(":Foto",$datos['Foto']);
-			$sql->execute();
-			return $sql;
-		}
-
-		/*funcion para eliminar cuentas en la bd con un array */
-		protected function eliminar_cuenta($codigo){
-			$sql=self::conectar_bd()->prepare("DELETE FROM cuenta WHERE CuentaCodigo=:Codigo");
-			$sql->bindParam(":Codigo",$codigo);
-			$sql->execute();
-			return $sql;
-		}
-
-		/*función para agregar bitacora(registros para el inicio de sesión*/
-		protected function guadar_bitacora($datos){
-			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO bitacora(BitacoraCodigo,BitacoraFecha,BitacoraHoraInicio,BitacoraHoraFinal,BitacoraTipo,BitacoraYear,CuentaCodigo) VALUES(:Codigo,:Fecha,:HoraInicio,:HoraFinal,:Tipo,:Year,:Cuenta)");
-			$sql->bindParam(":Codigo",$datos['Codigo']);
-			$sql->bindParam(":Fecha",$datos['Fecha']);
-			$sql->bindParam(":HoraInicio",$datos['HoraInicio']);
-			$sql->bindParam(":HoraFinal",$datos['HoraFinal']);
-			$sql->bindParam(":Tipo",$datos['Tipo']);
-			$sql->bindParam(":Year",$datos['Year']);
-			$sql->bindParam(":Cuenta",$datos['Cuenta']);
-			$sql->execute();
-			return $sql;
+			return $letra."-".$num; 
 		}
 
 		/*función para actualizar la hora final del inicio de sesión  en la Bitacora*/
@@ -78,16 +48,6 @@
 			$iv=substr(hash('sha256', SECRET_IV), 0, 16);
 			$output=openssl_decrypt(base64_decode($string), METHOD, $key, 0, $iv);
 			return $output;
-		}
-
-		/*funcion para generar codigos de forma aleatoria*/
-		protected function generar_codigo_aleatorio($letra,$longitud,$num){
-			for($i=1;$i<=$longitud;$i++){
-				$numero= rand(0,9);/*funcion para generar numero aleatorio*/
-				$letra.= $numero;
-			}
-
-			return $letra."-".$num; 
 		}
 
 		/*funcion para limpiar cadenas de texto de formularios*/

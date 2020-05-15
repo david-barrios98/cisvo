@@ -7,7 +7,7 @@
 
 	if (isset($_POST['dni-reg']) && isset($_POST['nombre-reg']) && isset($_POST['apellido-reg']) && 
         isset($_POST['genero-reg']) && isset($_POST['password1-reg']) && isset($_POST['password2-reg']) &&
-        isset($_POST['municipio-reg']) && isset($_POST['departamento-reg']) && isset($_POST['fnaci-reg'])) {
+        isset($_POST['municipio-reg']) && isset($_POST['departamento-reg']) && isset($_POST['fnaci-reg']) && isset($_POST['rol-reg'])) {
 		
         echo $insUsu->agregar_usuario_controlador();
 		

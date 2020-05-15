@@ -28,6 +28,7 @@
 			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
 			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
 			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
+			$rol=mainModelo::limpiar_cadena($_POST['rol-reg']);
 
 			/*Foto segun el sexo
 			if ($genero=="Masculino") {
@@ -92,7 +93,7 @@
 								"Municipio"=>$municipio,
 								"Clave"=>$clave,
 								//"Estado"=>'A',
-								"Rol"=>'U',
+								"Rol"=>$rol,
 								"Correo"=>$email
 							];
 							$guardarAdmin=usuarioModelo::agregar_usuarios_modelo($dataAdmin);
@@ -109,7 +110,7 @@
 								$alerta=[
 									"Alerta"=>"simple",
 									"Titulo"=>"Ocurrio un error inesperado",
-									"Texto"=>"No se ha podido registrar al Usuario",
+									"Texto"=>"No se pudo registrar al Usuario",
 									"Tipo"=>"error"
 								];
 							}
