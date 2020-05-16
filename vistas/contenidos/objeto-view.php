@@ -36,7 +36,9 @@
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; DATOS DEL OBJETO</h3>
 		</div>
 		<div class="panel-body">
-			<form>
+			<form action="<?php echo SERVERURL?>ajax/objetoAjax.php" method="POST" 
+			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" 
+			 enctype="multipart/form-data">
 		    	<fieldset>
 		    		<legend><i class="zmdi zmdi-assignment"></i> &nbsp; Información del objeto</legend>
 		    		<div class="full-box dashboard-sideBar-UserInfo">
@@ -50,33 +52,33 @@
                             <div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" id="NOMBREOBJETO" name="NOMBREOBJETO" required="" maxlength="50">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" id="nombre-obj" name="nombre-obj" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Modelo *</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="modelo-reg" id="modelo-reg" maxlength="4">
+								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="modelo-obj" id="modelo-obj" maxlength="4">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Marca *</label>				  	
-									<select class="form-control" name="marca-reg" id="marca-reg">
+									<select class="form-control" name="marca-obj" id="marca-obj">
 									</select>
 								</div>
 							</div>
                             <div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Tipo *</label>				  	
-									<select class="form-control" name="tipo-reg" id="tipo-reg">
+									<select class="form-control" name="tipo-obj" id="tipo-obj">
 									</select>
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Cantidad *</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="CANTIDADOBJETO" id="CANTIDADOBJETO" maxlength="50">
+								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="cantidad-obj" id="cantidad-obj" maxlength="50">
 								</div>
 		    				</div>	
 		    			</div>
@@ -96,7 +98,7 @@
 			    				<div class="col-xs-12 col-sm-6">
 							    	<div class="form-group label-floating">
 									  	<label class="control-label">No. Documento *</label>
-									  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="DOC" required="" maxlength="50">
+									  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="propietario-id" required="" maxlength="50">
 									</div>
 			    				</div>
 			    				<div class="col-xs-12 col-sm-6">
@@ -121,6 +123,7 @@
 			    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i>&nbsp; Guardar</button>
 					<a href="<?php echo SERVERURL; ?>vehiculo/" class=""><button type="submit" class="btn btn-warning btn-raised btn-sm"><i class="zmdi zmdi-folder">&nbsp; Guardar y Registrar Vehiculo</i> </button></a>
 			    </p>
+				<div class="RespuestaAjax" id="RespuestaAjax" name="RespuestaAjax"></div><!--MOSTARÁ LA RESPUESTA DEL AJAX-->
 		    </form>
 		</div>
 	</div>

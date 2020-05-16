@@ -120,9 +120,11 @@ $(document).ready(function(){
                 },
                 success: function (data){
                     respuesta.html(data);
+                    alert('acepta :'+ data)
                 },
                 error: function() {
                     respuesta.html(msjError);
+                    alert('error :' +data);
                 }
             });
             return false;

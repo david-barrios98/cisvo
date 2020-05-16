@@ -79,7 +79,7 @@ $(document).ready(function(){
       url: '../core/configComboxMarca.php'
     })
     .done(function(centro){
-      $('#marca-reg').html(centro)
+      $('#marca-obj').html(centro)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar las marcas')
@@ -91,7 +91,7 @@ $(document).ready(function(){
       url: '../core/configComboxTipo.php'
     })
     .done(function(centro){
-      $('#tipo-reg').html(centro)
+      $('#tipo-obj').html(centro)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar los tipos')
