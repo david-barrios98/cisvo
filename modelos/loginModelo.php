@@ -4,6 +4,13 @@ if($peticionAjax){
 }else{
     require_once "./core/mainModelo.php";
 }
+
+/**
+*@author Isaias Fajardo
+*@version V1.0.0_Mayo2020
+*El presente archivo contiene la clase(loginModelo) que interactua directamente con la base de datos.
+*/
+
  class loginModelo extends mainModelo {
   
   protected function iniciar_sesion_modelo($datos){

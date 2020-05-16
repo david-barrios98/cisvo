@@ -3,7 +3,7 @@
 	  <h1 class="text-titles"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Propietario/Poseedor<small> PERSONAS</small></h1>
 	</div>
 	<p class="lead">Este modulo del sistema permitirá el registro, busqueda, modificación y eliminación de los 
-	propietarios o poseedores de objetos y vehiculos, asignándoles  un rol o perfil (Aprendiz - Funcionario - Instructor - Visitante).</p>
+	propietarios o poseedores de objetos y vehiculos, asignándoles  un rol o perfil (Aprendiz - Funcionario - Visitante).</p>
 </div>
 
 <div class="container-fluid">

@@ -5,11 +5,15 @@
 		require_once "./core/mainModelo.php";
 	}
 	
+	/**
+	*@author David Barrios
+	*El presente archivo contiene la clase(usuarioModelo) que interactura con la base de datos. 
+	*/
 	class usuarioModelo extends mainModelo{
         
-        /**
-		 * @param $datos parametro tipo array para crear usuario 
-		 */
+		/**
+		*@param $datos parametro tipo array para crear usuario 
+		*/
 		protected function agregar_usuarios_modelo($datos){
 			$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
 
