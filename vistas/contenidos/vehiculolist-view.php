@@ -1,4 +1,4 @@
-<!-- Content page -->
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
 	<div class="page-header">
 	  <h1 class="text-titles"><i class="zmdi zmdi-car "></i> Vehiculos </h1>
@@ -8,7 +8,7 @@
 	</p>
 </div>
 
-<!-- Acciones a realizar (AÑADIR,LISTAR,BUSCAR)-->
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 	  	<li>
@@ -29,7 +29,7 @@
 	</ul>
 </div>
 
-<!-- panel listado de vehiculos -->
+<!-- panel listado de la informacion de  vehiculos -->
 <div class="container-fluid">
 	<div class="panel panel-success">
 		<div class="panel-heading">

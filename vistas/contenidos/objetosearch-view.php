@@ -1,3 +1,4 @@
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
 	<div class="page-header">
 	  <h1 class="text-titles"><i class="zmdi zmdi-folder"></i> Objetos </h1>
@@ -7,7 +8,7 @@
 	</p>
 </div>
 
-<!-- Acciones a realizar (AÑADIR,LISTAR,BUSCAR)-->
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 	  	<li>
@@ -35,7 +36,7 @@
 			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="form-group label-floating">
 					<span class="control-label">¿Qué objeto estas buscando?</span>
-					<input class="form-control" type="text" name="search_client_init" required="">
+					<input class="form-control" type="text" name="objeto-busqueda" required="">
 				</div>
 			</div>
 			<div class="col-xs-12">
@@ -60,6 +61,8 @@
 		</div>
 	</form>
 </div>
+
+<!-- Resultado de la búsqueda-->
 <div class="container-fluid">
 	<div class="panel panel-success">
 		<div class="panel-heading">

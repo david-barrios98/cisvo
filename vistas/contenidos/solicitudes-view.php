@@ -1,10 +1,13 @@
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
-<div class="page-header">
-	  <h1 class="text-titles"><i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Solicitudes<small> PERSONAS</small></h1>
+	<div class="page-header">
+		<h1 class="text-titles"><i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Solicitudes</h1>
+		</div>
+		<p class="lead">Este modulo del sistema permitirá el registro y busqueda de solicitudes, peticiones y quejas referentes a todo suceso que se presente en el estacionamiento y con los objetos. </p>
 	</div>
-	<p class="lead">Este modulo del sistema permitirá el registro y busqueda de solicitudes, peticiones y quejas referentes a todo suceso que se presente en el estacionamiento. </p>
 </div>
 
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 		<li>
@@ -25,7 +28,7 @@
 	</ul>
 </div>
 
-<!-- Panel nuevo administrador -->
+<!-- Formulario para registrar la información de la solicitud -->
 <div class="container-fluid">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -40,27 +43,22 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="dni-reg" required="" maxlength="30">
+								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="documento-txt" required="" maxlength="30">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
-								  	<label class="control-label">Nombre(s) de la persona </label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="nombre-reg" required="" maxlength="40">
+								  	<label class="control-label">Nombre(s) de la persona *</label>
+								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="nombre-txt" required="" maxlength="40">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
-								  	<label class="control-label">Apellido(s) de la persona </label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="nombre-reg" required="" maxlength="40">
+								  	<label class="control-label">Apellido(s) de la persona *</label>
+								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="apellido-txt" required="" maxlength="40">
 								</div>
 		    				</div>
-							<div class="col-xs-12 col-sm-6">
-								<div class="form-group label-floating">
-								  	<label class="control-label">Telefono </label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="telefono-reg" required="" maxlength="40">
-								</div>
-		    				</div>
+							
 		    			</div>
 		    		</div>
 		    	</fieldset>
@@ -73,7 +71,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Tipo de solicitud *</label>				  	
-									<select class="form-control" name ="tiposolicitud-reg" id="tiposolicitud-reg">
+									<select class="form-control" name ="tiposolicitud-txt" id="tiposolicitud-txt">
 									</select>
 								</div>
 							</div>
@@ -81,14 +79,15 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Selecione el objeto o vehiculo *</label>				  	
-									<select class="form-control" name ="objeveh-reg" id="objeveh-reg">
+									<select class="form-control" name ="objveh-txt" id="objveh-txt">
 									</select>
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-12">
 					    		<div class="form-group label-floating">
 								  	<label class="control-label">Ingrese la solucitud, petición o queja*</label>
-								  	<input class="form-control" type="textarea" name="descripsolicitud-reg" id="descripsolicitud-reg" required="">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="descripsolicitud-txt" id="descripsolicitud-txt" required="">
+									
 								</div>
 		    				</div>
 		    			</div>

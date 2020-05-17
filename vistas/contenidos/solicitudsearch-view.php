@@ -31,7 +31,7 @@
 			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="form-group label-floating">
 					<span class="control-label">¿Qué solicitud estas buscando?</span>
-					<input class="form-control" type="text" name="search_client_init" required="">
+					<input class="form-control" type="text" name="solicitud-busqueda" required="">
 				</div>
 			</div>
 			<div class="col-xs-12">

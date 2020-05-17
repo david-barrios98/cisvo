@@ -86,6 +86,31 @@ body, html{
 .logInForm label{
 	color: #FFF;
 }
+
+/*ERROR 404 */
+.container-404{
+	background-image: url(../assets/img/404.gif);
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+.container-404 a{
+	color: white;
+	text-decoration: none ;
+	font-size: 30px;
+	padding-bottom:  1px;
+	margin-bottom: 30px;
+	border-bottom: 2px solid white;
+}
+.container-404 a:hover{
+	color: #FF6600;
+	text-decoration: none ;
+	font-size: 30px;
+	padding: 1px;
+	margin-bottom: 30px;
+	border-bottom: 2px solid #FF6600;
+}
 /*============ Partes del dashboard*/
 .dashboard-sideBar,
 .dashboard-contentPage{

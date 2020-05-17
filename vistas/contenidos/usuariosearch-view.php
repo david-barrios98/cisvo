@@ -1,4 +1,4 @@
-<!-- Content page-Contenido de la pagina-->
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
 	<div class="page-header">
 	  <h1 class="text-titles"><i class="zmdi zmdi-accounts-alt "></i> Usuarios </h1>
@@ -8,22 +8,22 @@
 	</p>
 </div>
 
-<!-- Acciones a realizar (AÑADIR,LISTAR,BUSCAR)-->
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 	  	<li>
 	  		<a href="<?php echo SERVERURL; ?>usuario/" class="btn btn-info">
-	  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO VEHICULO
+	  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO USUARIO
 	  		</a>
 	  	</li>
 	  	<li>
 	  		<a href="<?php echo SERVERURL; ?>usuariolist/" class="btn btn-success">
-	  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTADO DE VEHICULOS
+	  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTADO DE USUARIOS
 	  		</a>
 	  	</li>
 	  	<li>
 	  		<a href="<?php echo SERVERURL; ?>usuariosearch/" class="btn btn-primary">
-	  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR VEHICULO
+	  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR USUARIO
 	  		</a>
 	  	</li>
 	</ul>
@@ -36,7 +36,7 @@
 			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="form-group label-floating">
 					<span class="control-label">¿A quién estas buscando?</span>
-					<input class="form-control" type="text" name="search_client_init" required="">
+					<input class="form-control" type="text" name="usuario-busqueda" required="">
 				</div>
 			</div>
 			<div class="col-xs-12">

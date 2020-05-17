@@ -1,11 +1,13 @@
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
 	<div class="page-header">
-	  <h1 class="text-titles"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Propietario/Poseedor<small> PERSONAS</small></h1>
+	  <h1 class="text-titles"><i class="zmdi zmdi-male-female zmdi-hc-fw"></i> Propietario/Poseedor</h1>
 	</div>
-	<p class="lead">Este modulo del sistema permitirá el registro, busqueda, modificación y eliminación de los 
+	<p class="lead" align="justify">Este modulo del sistema permitirá el registro, busqueda, modificación y eliminación de los 
 	propietarios o poseedores de objetos y vehiculos, asignándoles  un rol o perfil (Aprendiz - Funcionario - Visitante).</p>
 </div>
 
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 	  	<li>
@@ -15,16 +17,17 @@
 	  	</li>
 	  	<li>
 	  		<a href="<?php echo SERVERURL; ?>propietariolist/" class="btn btn-success">
-	  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE PROPIETARIO/POSEEDOR
+	  			<i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTADO DE PROPIETARIO/POSEEDOR
 	  		</a>
 	  	</li>
 		  <li>
 	  		<a href="<?php echo SERVERURL; ?>propietariosearch/" class="btn btn-primary">
-	  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR PROPIETARIO
+	  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR PROPIETARIO/POSEEDOR
 	  		</a>
 	  	</li>
 	</ul>
 </div>
+
 <!-- ZONA DE BUSQUEDA DEL FORMULARIO-->
 <div class="container-fluid">
 	<form class="well">
@@ -32,7 +35,7 @@
 			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="form-group label-floating">
 					<span class="control-label">¿Qué objeto estas buscando?</span>
-					<input class="form-control" type="text" name="search_client_init" required="">
+					<input class="form-control" type="text" name="propietario-busqueda" required="">
 				</div>
 			</div>
 			<div class="col-xs-12">
@@ -57,6 +60,8 @@
 		</div>
 	</form>
 </div>
+
+<!--Resultado de la busqueda-->
 <div class="container-fluid">
 	<div class="panel panel-success">
 		<div class="panel-heading">

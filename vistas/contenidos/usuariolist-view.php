@@ -1,4 +1,4 @@
-<!-- Content page- Contenido de la pagina -->
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
 	<div class="page-header">
 	  <h1 class="text-titles"><i class="zmdi zmdi-accounts-alt "></i> Usuarios </h1>
@@ -8,12 +8,12 @@
 	</p>
 </div>
 
-<!-- Acciones a realizar (AÑADIR,LISTAR,BUSCAR)-->
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 	  	<li>
 	  		<a href="<?php echo SERVERURL; ?>usuario/" class="btn btn-info">
-	  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO USUARIOS
+	  			<i class="zmdi zmdi-plus"></i> &nbsp; NUEVO USUARIO
 	  		</a>
 	  	</li>
 	  	<li>
@@ -23,7 +23,7 @@
 	  	</li>
 	  	<li>
 	  		<a href="<?php echo SERVERURL; ?>usuariosearch/" class="btn btn-primary">
-	  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR USUARIOS
+	  			<i class="zmdi zmdi-search"></i> &nbsp; BUSCAR USUARIO
 	  		</a>
 	  	</li>
 	</ul>
@@ -31,6 +31,7 @@
 <?php require_once "./controladores/usuarioControlador.php";
 	$usu = new usuarioControlador();
 ?>
+
 <!-- panel listado de usuarios- LISTADO DE INFORMACION  -->
 <div class="container-fluid">
 	<div class="panel panel-success">

@@ -1,13 +1,14 @@
+<!-- Content page-Descripcion del formulario -->
 <div class="container-fluid">
 	<div class="page-header">
-	  <h1 class="text-titles"><i class="zmdi zmdi-folder "></i> Objetos </h1>
+	  <h1 class="text-titles"><i class="zmdi zmdi-folder"></i> Objetos </h1>
 	</div>
 	<p class="lead" align="justify">
 		Esta funcionalidad del sistema, le permite añadir, actualizar, eliminar y consultar, información de los objetos que ingresan y salen del centro de formación!
 	</p>
 </div>
 
-<!-- Acciones a realizar (AÑADIR,LISTAR,BUSCAR)-->
+<!-- Anclas para cambiar las paginas (registrar,listar,buscar). -->
 <div class="container-fluid">
 	<ul class="breadcrumb breadcrumb-tabs">
 	  	<li>
@@ -27,6 +28,8 @@
 	  	</li>
 	</ul>
 </div>
+
+<!-- panel datos del objeto Lista de la informacion  -->
 <div class="container-fluid">
 	<div class="panel panel-success">
 		<div class="panel-heading">
