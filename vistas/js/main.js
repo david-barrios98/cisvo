@@ -24,7 +24,7 @@ $(document).ready(function(){
 			SubMenu.addClass('show-sideBar-SubMenu');
 		}
 	});
-	$('.form-control tooltips-general').on('click', function(){
+	/*$('.form-control tooltips-general').on('click', function(){
 		if (this.value=='aprendiz'){
 			$.ajax({ 
 				beforeSend: function(){ 
@@ -33,18 +33,18 @@ $(document).ready(function(){
 				}
 			});
 		}
-	});
+	});*/
     $('.btn-exit-system').on('click', function(e){
         e.preventDefault();
         swal({
-            title: 'Are you sure?',
-            text: "The current session will be closed",
+            title: 'Estas seguro?',
+            text: "Cerrar la sesión y salir del sistema",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#03A9F4',
             cancelButtonColor: '#F44336',
-            confirmButtonText: '<i class="zmdi zmdi-run"></i> Yes, Exit!',
-            cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancel!'
+            confirmButtonText: '<i class="zmdi zmdi-run"></i> Si, Salir!',
+            cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Quedarme!'
         }).then(function () {
             window.location.href="index.html";
         });
@@ -120,11 +120,11 @@ $(document).ready(function(){
                 },
                 success: function (data){
                     respuesta.html(data);
-                    alert('acepta :'+ data)
+                    //alert('Bien :'+ data)
                 },
                 error: function() {
                     respuesta.html(msjError);
-                    alert('error :' +data);
+                    //alert('Mal :' +data);
                 }
             });
             return false;

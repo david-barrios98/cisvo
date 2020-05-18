@@ -1,17 +1,17 @@
 <?php
     $peticionAjax=true;
     require_once 'mainModelo.php';
+
     /**
      *@author David Barrios
-     *Clase para cargar combobox de programas de formacion o especialidades de aprendiz
+     *Clase para cargar combobox en el rol de funcionario 
      * */
-    class comboxPrograma extends mainModelo{
-        protected $programa = "SELECT Det_Codigo, Det_Desc FROM tbl_deta_parametro WHERE Det_Par_Codigo=5 ORDER BY Det_Desc ASC";
-
-        public function cagarProgramas(){
+    class comboxArea extends mainModelo{
+        protected $area = "SELECT Det_Codigo, Det_Desc FROM tbl_deta_parametro WHERE Det_Par_Codigo=9";
+        public function cagarArea(){
             $conexion=mainModelo::conectar_bd();
-            $programa = $this->programa;
-            $datos=$conexion->query($programa);
+            $area = $this->area;
+            $datos=$conexion->query($area);
             $datos= $datos->fetchAll(); //array de datos con la consulta
             $combo='<option value=""></option>';
 
@@ -21,8 +21,8 @@
                     ";
                 }
             return $combo;
-        }    
+        }     
     }
 
-    $ins = new comboxPrograma();
-    echo $ins->cagarProgramas();
+    $ins = new comboxArea();
+    echo $ins->cagarArea();

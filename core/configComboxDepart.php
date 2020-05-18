@@ -2,8 +2,12 @@
     $peticionAjax=true;
     require_once 'mainModelo.php';
 
+    /**
+     *@author David Barrios
+     *Clase para cargar combobox de departamentos
+     * */
     class comboxDepartamento extends mainModelo{
-        protected $departamentos = "SELECT Dep_Codigo, Dep_Nombre FROM tbl_departamento";
+        protected $departamentos = "SELECT Dep_Codigo, Dep_Nombre FROM tbl_departamento ORDER BY Dep_Nombre ASC";
 
         public function cagarDepartamentos(){
             $conexion=mainModelo::conectar_bd();

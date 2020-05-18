@@ -1,15 +1,15 @@
 $(document).ready(function(){
   //ROLES DEL PROPIETARIO
-    //SE OCULTAN AL CARGAR EL FORMULARIO PRINCIPAL DE REGISTRO
+    //SE OCULTAN LOS FORMULARIOS DE LOS 3 ROLES AL CARGAR EL FORMULARIO PRINCIPAL DE REGISTRO
     $('#visitante').hide(); 
     $('#aprendiz').hide();
     $('#funcionario').hide();
 
-    $('#rolpropietario-reg').on('change', function(){
+    $('#rolpropietario-txt').on('change', function(){
       //SI SE SELECCIONA UNA OPCION EN EL COMBOX ROL DE PROPIETARIO
       $.ajax({
         success: function(){
-          var rol = $('#rolpropietario-reg').val() //SE ALMACANEA EL VALOR QUE TRAIGA LA OPCION
+          var rol = $('#rolpropietario-txt').val() //SE ALMACANEA EL VALOR QUE TRAIGA LA OPCION
 
           //SE EVALUA LO QUE TRAIGA
           if(rol == 'aprendiz'){
@@ -37,80 +37,99 @@ $(document).ready(function(){
       })*/
     })
 
+    /*Carga el combobox del area a la que pertenece el funcionario*/
     $.ajax({
       type: 'POST',
       cache: false,
-      url: '../core/configComboxCargo.php'
+      url: '../core/configComboxAreaFun.php'
     })
-    .done(function(especialidad){
-      $('#cargo-reg').html(especialidad)
+    .done(function(area){
+      $('#area-txt').html(area)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar los cargos')
     })*/
 
+    /*Carga el combobox del cargo del funcionario*/
+    $.ajax({
+      type: 'POST',
+      cache: false,
+      url: '../core/configComboxCargo.php'
+    })
+    .done(function(cargo){
+      $('#cargo-txt').html(cargo)
+    })
+    /*.fail(function(){
+      alert('Hubo un errror al cargar los cargos')
+    })*/
+
+    /*Carga el combobox del centro de formacion en propietario*/
     $.ajax({
       type: 'POST',
       cache: false,
       url: '../core/configComboxCentr.php'
     })
     .done(function(centro){
-      $('#centro-reg').html(centro)
+      $('#centro-txt').html(centro)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar los centros')
     })*/
 
+    /*Carga el combobox de especialidad o programa de formacion del aprendiz*/
     $.ajax({
       type: 'POST',
       cache: false,
       url: '../core/configComboxProgr.php'
     })
-    .done(function(centro){
-      $('.especialidad-reg').html(centro)
+    .done(function(programa){
+      $('#especialidad-txt').html(programa)
     })
     /*.fail(function(){
-      alert('Hubo un errror al cargar las especialidades y areas')
+      alert('Hubo un errror al cargar las especialidades')
     })*/
 
+    /*Carga el combobox de marca de objetos */
     $.ajax({
       type: 'POST',
       cache: false,
       url: '../core/configComboxMarca.php'
     })
-    .done(function(centro){
-      $('#marca-obj').html(centro)
+    .done(function(marcaobjeto){
+      $('#marcaobjeto-txt').html(marcaobjeto)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar las marcas')
     })*/
 
+    /*Carga el combobox de tipos de objetos*/
     $.ajax({
       type: 'POST',
       cache: false,
       url: '../core/configComboxTipo.php'
     })
-    .done(function(centro){
-      $('#tipo-obj').html(centro)
+    .done(function(tipoobjeto){
+      $('#tipoobjeto-txt').html(tipoobjeto)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar los tipos')
     })*/
 
+    /*Carga el combobox de departamento en el propietario*/
     $.ajax({
       type: 'POST',
       cache: false,
       url: '../core/configComboxDepart.php'
     })
     .done(function(departamentos){
-      $('#departamento-reg').html(departamentos)
+      $('#departamento-txt').html(departamentos)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar las departamentos')
     })*/
 
-    $('#departamento-reg').on('change', function(){
-      var id = $('#departamento-reg').val()
+    $('#departamento-txt').on('change', function(){
+      var id = $('#departamento-txt').val()
       $.ajax({
         type: 'POST',
         cache: false,
@@ -118,51 +137,57 @@ $(document).ready(function(){
         data: {'id': id}
       })
       .done(function(municipios){
-        $('#municipio-reg').html(municipios)
+        $('#municipio-txt').html(municipios)
       })
       /*.fail(function(){
         alert('Hubo un errror al cargar los municipios')
       })*/
     })
-    $('#tipovehiculo-reg').on('change', function(){
-      var id = $('#tipovehiculo-reg').val()
+
+    /*Carga el combobox del tipo de vehiculo*/
+    $('#tipovehiculo-txt').on('change', function(){
+      var id = $('#tipovehiculo-txt').val()
       $.ajax({
         type: 'POST',
         cache: false,
         url: '../core/configComboMarVeh.php',
         data: {'id': id}
       })
-      .done(function(marcas){
-        $('#marcavehiculo-reg').html(marcas)
+      .done(function(tipoveh){
+        $('#tipovehiculo-txt').html(tipoveh)
       })
       /*.fail(function(){
         alert('Hubo un errror al cargar los marca de vehiculos')
       })*/
     })
+    
+    /*Carga el combobox de las marcas de vehiculo*/
+    $('#marcavehiculo-txt').on('change', function(){
+      var id = $('#marcavehiculo-txt').val()
+      $.ajax({
+        type: 'POST',
+        cache: false,
+        url: '../core/configComboMarVeh.php',
+        data: {'id': id}
+      })
+      .done(function(marcasvehiculo){
+        $('#marcavehiculo-txt').html(marcasvehiculo)
+      })
+      /*.fail(function(){
+        alert('Hubo un errror al cargar los marca de vehiculos')
+      })*/
+    })
+
+    /*Carga el combobox de tipos de solicitudes*/
     $.ajax({
       type: 'POST',
       cache: false,
       url: '../core/configComboSoliTipo.php'
     })
     .done(function(tiposolicitud){
-      $('#tiposolicitud-reg').html(tiposolicitud)
+      $('#tiposolicitud-txt').html(tiposolicitud)
     })
     /*.fail(function(){
       alert('Hubo un errror al cargar las departamentos')
     })*/
-    $('#').on('change', function(){
-      var id = $('dni-reg').val()
-      $.ajax({
-        type: 'POST',
-        cache: false,
-        url: '../core/configComboMarVeh.php',
-        data: {'id': id}
-      })
-      .done(function(marcas){
-        $('#marcavehiculo-reg').html(marcas)
-      })
-      /*.fail(function(){
-        alert('Hubo un errror al cargar los marca de vehiculos')
-      })*/
-    })
-})
+  })

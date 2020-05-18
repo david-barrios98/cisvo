@@ -69,13 +69,13 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) de la persona *</label>
-								  	<input pattern="[a-zA-Z áéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="nombre-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="nombre-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) de la persona *</label>
-								  	<input pattern="[a-zA-Z áéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="apellido-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="apellido-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
@@ -87,7 +87,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Dirección *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="direccion-txt"  maxlength="70">
+								  	<input class="form-control" type="text" name="direccion-txt"  maxlength="70">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
@@ -159,8 +159,8 @@
 					<a href="<?php echo SERVERURL; ?>objetos/" class=""><button type="submit" class="btn btn-warning btn-raised btn-sm"><i class="zmdi zmdi-folder">&nbsp; Guardar y Registrar Objeto</i> </button></a>
 					<a href="<?php echo SERVERURL; ?>vehiculo/" class=""><button type="submit" class="btn btn-success btn-raised btn-sm"><i class="zmdi zmdi-directions-car">&nbsp; Guardar y Registrar Vehiculo</i></button></a>
 			    </p>
+				<div class="RespuestaAjax" id="RespuestaAjax" name="RespuestaAjax"></div><!--MOSTRARÁ LA RESPUESTA DEL AJAX-->
 		    </form>
-			<div class="RespuestaAjax" id="RespuestaAjax" name="RespuestaAjax"></div><!--MOSTRARÁ LA RESPUESTA DEL AJAX-->
 		</div>
 	</div>
 </div>

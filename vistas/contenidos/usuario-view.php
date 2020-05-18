@@ -29,7 +29,7 @@
 	</ul>
 </div>
 
-<!-- Formulario para registrar la información del propietario -->
+<!-- Formulario para registrar la información del usuario -->
 <div class="container-fluid">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
@@ -59,13 +59,13 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) *</label>
-								  	<input pattern="[a-zA-Z áéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
+								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}"class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) *</label>
-								  	<input pattern="[a-zA-Z áéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="apellido-txt" id="apellido-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="apellido-txt" id="apellido-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -77,7 +77,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Dirección *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="direccion-txt" id="direccion-txt" maxlength="70">
+								  	<input class="form-control" type="text" name="direccion-txt" id="direccion-txt" maxlength="70">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
@@ -178,7 +178,7 @@
 								</div>
 								<div class="radio radio-primary">
 									<label>
-										<input type="radio" name="rol2-txt" id="rol2-txt" value="U">
+										<input type="radio" name="rol1-txt" id="rol1-txt" value="U">
 										<i class="zmdi zmdi-star"></i> &nbsp; Rol 2 Sin permiso a reportes y registro de usuarios
 									</label>
 								</div>

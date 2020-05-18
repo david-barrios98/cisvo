@@ -3,7 +3,7 @@
     require_once 'mainModelo.php';
 
     class comboxCargos extends mainModelo{
-        protected $area = "SELECT Det_Codigo, Det_Desc FROM tbl_deta_parametro WHERE Det_Par_Codigo=4";
+        protected $area = "SELECT Det_Codigo, Det_Desc FROM tbl_deta_parametro WHERE Det_Par_Codigo=7";
 
         public function cagarCargo(){
             $conexion=mainModelo::conectar_bd();

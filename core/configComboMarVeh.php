@@ -2,9 +2,14 @@
     $peticionAjax=true;
     require_once 'mainModelo.php';
 
+    /**
+     *@author David Barrios
+     *Clase para cargar combobox de vehiculos
+     * */
+     
     class comboxMarVeh extends mainModelo{
 
-        public function cagarMarVeh(){
+        public function cagarMarcaVeh(){
             $conexion=mainModelo::conectar_bd();
             $id = $_POST['id'];
                 $MarVeh = "SELECT Det_Codigo, Det_Desc FROM tbl_deta_parametro WHERE Det_Par_Codigo=$id";

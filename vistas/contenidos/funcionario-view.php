@@ -22,7 +22,7 @@
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group label-floating">
-                    <label class="control-label">Cargo</label>				  	
+                    <label class="control-label">Cargo *</label>				  	
                     <select class="form-control" name="cargo-txt" id="cargo-txt">
                     </select>
                 </div>
