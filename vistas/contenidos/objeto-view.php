@@ -37,7 +37,7 @@
 		</div>
 		<div class="panel-body">
 			<form action="<?php echo SERVERURL?>ajax/objetoAjax.php" method="POST" 
-			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" 
+			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="off" 
 			 enctype="multipart/form-data">
 			 <!-- Datos del objeto -->
 		    	<fieldset>
@@ -59,7 +59,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Modelo *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="modeloobjeto-txt" id="modelobjeto-txt" required="" maxlength="150">
+								  	<input  class="form-control" type="text" name="modeloobjeto-txt" id="modelobjeto-txt" required="" maxlength="150">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">

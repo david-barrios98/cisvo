@@ -1,29 +1,35 @@
 <?php
 	
 	if($peticionAjax){
-		require_once "../modelos/ObjetoModelo.php";
+		require_once "../modelos/objetoModelo.php";
 	}else{
-		require_once "./modelos/ObjetoModelo.php";
+		require_once "./modelos/objetoModelo.php";
 	}
 	
-	class ObjetoControlador extends ObjetoModelo{
-
+	/**
+    *@author Hollman Ortiz
+    *@version V1.0.0_Mayo2020
+    *El presente archivo contiene la clase(objetoControlador) para la interaccion con el modelo y la vista.
+    *
+    */
+	class objetoControlador extends objetoModelo{
 		
-		public function registrar_Objeto_controlador(){
-			/*Captura de datos del formulario vehiculo-view, En variables, 
+		public function registrar_objeto_controlador(){
+			/*Captura de datos del formulario objeto-view, En variables, 
 			pasando por una funcion llamada limpiar_cadena(archivo mainModelo)
 		 	para evitar inyecciones sql por los formularios
 			*/
-			$Nombre=mainModelo::limpiar_cadena($_POST['nombre-obj']);
-			$Marca=mainModelo::limpiar_cadena($_POST['marca-obj']);
-			$Modelo=mainModelo::limpiar_cadena($_POST['modelo-obj']);
-			$Cantidad=mainModelo::limpiar_cadena($_POST['cantidad-obj']);
-			$Tipo=mainModelo::limpiar_cadena($_POST['tipo-obj']);
-			$Propietario=mainModelo::limpiar_cadena($_POST['propietario-id']);
-            $codigoaleatorio=1234;
-
+			$Nombre=mainModelo::limpiar_cadena($_POST['objeto-txt']);
+			$Marca=mainModelo::limpiar_cadena($_POST['marcaobjeto-txt']);
+			$Modelo=mainModelo::limpiar_cadena($_POST['modeloobjeto-txt']);
+			$Cantidad=mainModelo::limpiar_cadena($_POST['cantidadobjeto-txt']);
+			$Tipo=mainModelo::limpiar_cadena($_POST['tipoobjeto-txt']);
+			$Propietario=mainModelo::limpiar_cadena($_POST['docpropietario-txt']);     
+			$codigo= objetoModelo::codigo_auto();
+			$codigo= ($codigo->rowCount()+1);
+			
 			$dataobjeto=[
-		        "Codigo"=>$codigoaleatorio,
+		        "Codigo"=>$codigo,
 				"Nombre"=>$Nombre,
 				"Marca"=>$Marca,
 				"Modelo"=>$Modelo,
@@ -32,22 +38,22 @@
 				"Estado"=>'A',
 				"Propietario"=>$Propietario
 			];
-			var_dump($dataobjeto);
-			$guardarObjeto=ObjetoModelo::registrar_Objeto_modelo($dataobjeto);
+			
+			$guardarObjeto=ObjetoModelo::registrar_objeto_modelo($dataobjeto);
 
 			if ($guardarObjeto->rowCount()==1) {
 				$alerta=[
 					"Alerta"=>"limpiar",
-					"Titulo"=>"Administrador registrado",
+					"Titulo"=>"Objeto registrado",
 					"Texto"=>"Registro exitoso!",
 					"Tipo"=>"success"
 			    ];
 		    }else{
-				//mainModelo::eliminar_cuenta($Propietario);
+				
 				$alerta=[
 					"Alerta"=>"simple",
 					"Titulo"=>"Ocurrio un error inesperado",
-					"Texto"=>"No se registro!",
+					"Texto"=>"No se ha podido registrar el objeto!",
 					"Tipo"=>"error"
 				];
 		    }

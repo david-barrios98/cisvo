@@ -3,10 +3,10 @@
 	
 	require_once "../core/configGeneral.php";
 
-	if (isset($_POST['nombre-obj'])) {
-		require_once "../controladores/ObjetoControlador.php";
-		$insAdmin= new objetoControlador();
-		echo $insAdmin->registrar_Objeto_controlador();
+	if (isset($_POST['objeto-txt'])) {
+		require_once "../controladores/objetoControlador.php";
+		$insObjeto= new objetoControlador();
+		echo $insObjeto->registrar_objeto_controlador();
 	} else {
 		session_start();
 		session_destroy();

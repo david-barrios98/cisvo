@@ -53,25 +53,25 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="documento-txt" id="documento-txt" required="" maxlength="50">
+								  	<input pattern="[0-9-]{1,50}" class="form-control" type="text" name="documento-txt" id="documento-txt" required="" maxlength="50">
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) *</label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}"class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
+								  	<input class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) *</label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="apellido-txt" id="apellido-txt" required="" maxlength="50">
+								  	<input class="form-control" type="text" name="apellido-txt" id="apellido-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Fecha Nacimiento</label>
-								  	<input  class="form-control" type="date" name="fechanac-txt" id="fechanac-txt" value="<?php echo date("Y-m-d");?>">
+								  	<input class="form-control" type="date" name="fechanac-txt" id="fechanac-txt" value="<?php echo date("Y-m-d");?>">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -124,13 +124,13 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Teléfono *</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-reg"  id="telefono-reg" maxlength="15">
+								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" maxlength="15">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">E-mail</label>
-								  	<input class="form-control" type="email" name="email-reg" id="email-reg" maxlength="50">
+								  	<input class="form-control" type="email" name="email-txt" id="email-txt" maxlength="50">
 								</div>
 		    				</div>
 		    			</div>
@@ -145,13 +145,13 @@
 						<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Contraseña *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="password" name="password1-reg" id="password1-reg"required="" maxlength="25">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="password" name="password1-txt" id="password1-txt"required="" maxlength="25">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Confirme contraseña *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="password" name="password2-reg" id="password2-reg" required="" maxlength="25">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="password" name="password2-txt" id="password2-txt" required="" maxlength="25">
 								</div>
 		    				</div>
 		    		</div>
@@ -172,13 +172,13 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="radio radio-primary">
 									<label>
-										<input type="radio" name="rol1-txt" id="rol1-txt" value="A">
+										<input type="radio" name="roluser-txt" id="roluser-txt" value="A">
 										<i class="zmdi zmdi-star"></i> &nbsp; Rol 1 Control total del sistema
 									</label>
 								</div>
 								<div class="radio radio-primary">
 									<label>
-										<input type="radio" name="rol1-txt" id="rol1-txt" value="U">
+										<input type="radio" name="roluser-txt" id="roluser-txt" value="U">
 										<i class="zmdi zmdi-star"></i> &nbsp; Rol 2 Sin permiso a reportes y registro de usuarios
 									</label>
 								</div>

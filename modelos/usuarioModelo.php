@@ -16,9 +16,8 @@
 		*/
 		protected function agregar_usuarios_modelo($datos){
 			$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
-
 			/*Funcion para vincular un parametro al nombre de la variable espcificada */
-			$sql->bindParam(":Id",$datos['DNI']);
+			$sql->bindParam(":Id",$datos['Doc']);
 			$sql->bindParam(":Nombre",$datos['Nombre']);
 			$sql->bindParam(":Apellido",$datos['Apellido']);
 			$sql->bindParam(":Direccion",$datos['Direccion']);
@@ -26,9 +25,10 @@
 			$sql->bindParam(":Clave",$datos['Clave']);
 			$sql->bindParam(":Fnac",$datos['Fnacimiento']);
 			$sql->bindParam(":Correo",$datos['Correo']);
-			//$sql->bindParam(":Estado",$datos['Estado']);
+			$sql->bindParam(":Estado",$datos['Estado']);
 			$sql->bindParam(":Municipio",$datos['Municipio']);
 			$sql->bindParam(":Sexo",$datos['Sexo']);
+			$sql->bindParam(":Foto",$datos['Foto']);
 			$sql->bindParam(":Rol",$datos['Rol']);
 			$sql->execute();
 

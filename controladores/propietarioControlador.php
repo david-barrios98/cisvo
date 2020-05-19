@@ -201,12 +201,12 @@
 			$inicio = ($pagina > 1) ? ($pagina * $regxpagina - $regxpagina) : 0 ;  //indice de Registro a cargar por pagina
 			$conexion = mainModelo::conectar_bd();
 			
-			$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_propietario_poseedor INNER JOIN tbl_municipio WHERE Pro_Municipio = Mun_Codigo ORDER BY Pro_Doc_Id LIMIT $inicio, $regxpagina");
+			$articulos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_propietario_poseedor INNER JOIN tbl_municipio WHERE Pro_Municipio = Mun_Codigo ORDER BY Pro_Doc LIMIT $inicio, $regxpagina");
 			$articulos->execute();
 			$articulos = $articulos->fetchAll();  //array de datos con la consulta 
 
 			$totalArticulos = $conexion->query('SELECT FOUND_ROWS() as total');  
-			$totalArticulos = $totalArticulos->fetch()['total'];  //Devuelve el total de registro en el sistema (17)
+			$totalArticulos = $totalArticulos->fetch()['total'];  //Devuelve el total de registro en el sistema 
 			$numeroPaginas = ceil($totalArticulos / $regxpagina);//total paginas del paginador 
 
 
@@ -239,7 +239,7 @@
 					$tabla.='
 					     <tr>
 					        <td>'.$contador.'</td>
-                            <td>'.$filas['Pro_Doc_Id'].'</td>
+                            <td>'.$filas['Pro_Doc'].'</td>
 							<td>'.$filas['Pro_Nombre'].'</td>
 							<td>'.$filas['Pro_Apellido'].'</td>
 							<td>'.$filas['Pro_FechaNac'].'</td>

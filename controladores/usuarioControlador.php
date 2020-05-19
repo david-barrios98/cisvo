@@ -17,25 +17,27 @@
 			pasando por una funcion llamada limpiar_cadena(archivo mainModelo)
 		 	para evitar inyecciones sql por los formularios
 			*/
-			$dni=mainModelo::limpiar_cadena($_POST['dni-reg']);
-			$nombre=mainModelo::limpiar_cadena($_POST['nombre-reg']);
-			$apellido=mainModelo::limpiar_cadena($_POST['apellido-reg']);
-			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
-			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
-			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
-			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
-			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
-			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
-			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
-			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
-			$rol=mainModelo::limpiar_cadena($_POST['rol-reg']);
+			$doc=mainModelo::limpiar_cadena($_POST['documento-txt']);
+			echo $doc;
+			$nombre=mainModelo::limpiar_cadena($_POST['nombre-txt']);
+			$apellido=mainModelo::limpiar_cadena($_POST['apellido-txt']);
+			$telefono=mainModelo::limpiar_cadena($_POST['telefono-txt']);
+			$fnacimiento=mainModelo::limpiar_cadena($_POST['fechanac-txt']);
+			$direccion=mainModelo::limpiar_cadena($_POST['direccion-txt']);
+			$pass1=mainModelo::limpiar_cadena($_POST['password1-txt']);
+			$pass2=mainModelo::limpiar_cadena($_POST['password2-txt']);
+			$email=mainModelo::limpiar_cadena($_POST['email-txt']);
+			$genero=mainModelo::limpiar_cadena($_POST['genero-txt']);
+			$municipio=mainModelo::limpiar_cadena($_POST['municipio-txt']);
+			$rol=mainModelo::limpiar_cadena($_POST['roluser-txt']);
 
-			/*Foto segun el sexo
+			
 			if ($genero=="Masculino") {
 				$foto="AdminMale.png";
 			} else {
 				$foto="AdminFemale.png";
-			}*/
+			}
+
 			/*comprobacion de contraseña, que sean identicas*/
 			if ($pass1 != $pass2) {
 				$alerta=[
@@ -46,7 +48,7 @@
 				];
 			}else{
 				/*Validación de documento en el sistema*/
-				$consulta_doc=usuarioModelo::ejecutar_consulta_usuario($dni);
+				$consulta_doc=usuarioModelo::ejecutar_consulta_usuario($doc);
 				if ($consulta_doc->rowCount()>=1) {
 					$alerta=[
 						"Alerta"=>"simple",
@@ -72,7 +74,7 @@
 						];
 					}else{
 						/*Validación de Usuario en el sistema*/
-						$consulta_usuario=usuarioModelo::ejecutar_consulta_usuario($dni);
+						$consulta_usuario=usuarioModelo::ejecutar_consulta_usuario($doc);
 						if($consulta_usuario->rowCount()>=1){
 							$alerta=[
 								"Alerta"=>"simple",
@@ -83,7 +85,7 @@
 						}else{
 							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
 							$dataAdmin=[
-								"DNI"=>$dni,
+								"Doc"=>$doc,
 								"Nombre"=>$nombre,
 								"Apellido"=>$apellido,
 								"Telefono"=>$telefono,
@@ -92,16 +94,17 @@
 								"Fnacimiento"=>$fnacimiento,
 								"Municipio"=>$municipio,
 								"Clave"=>$clave,
-								//"Estado"=>'A',
+								"Estado"=>'A',
 								"Rol"=>$rol,
 								"Correo"=>$email
 							];
+							
 							$guardarAdmin=usuarioModelo::agregar_usuarios_modelo($dataAdmin);
 
 							if ($guardarAdmin->rowCount()>=1) {
 								$alerta=[
 									"Alerta"=>"limpiar",
-									"Titulo"=>"Administrador registrado",
+									"Titulo"=>"Usuario registrado",
 									"Texto"=>"Registro exitoso!",
 									"Tipo"=>"success"
 								];
@@ -110,7 +113,7 @@
 								$alerta=[
 									"Alerta"=>"simple",
 									"Titulo"=>"Ocurrio un error inesperado",
-									"Texto"=>"No se pudo registrar al Usuario",
+									"Texto"=>"No se pudo registrar al usuario",
 									"Tipo"=>"error"
 								];
 							}
