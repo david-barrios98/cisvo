@@ -10,7 +10,7 @@
 		<div class="full-box dashboard-sideBar-UserInfo">
 			<figure class="full-box">
 				<img src="<?php echo SERVERURL; ?>vistas/assets/avatars/Male1Avatar.png" alt="UserIcon">
-				<figcaption class="text-center text-titles">User name</figcaption>
+				<figcaption class="text-center text-titles"><?php echo $_SESSION['nombre_CISVO']." ".$_SESSION['apellido_CISVO'];?></figcaption>
 			</figure>
 			<ul class="full-box list-unstyled text-center">
 				<li>
@@ -29,7 +29,8 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" title="Salir del sistema" class="btn-exit-system">
+				<!--token para cierre de session encriptado-->
+					<a href="<?php echo $insLogin->encryption($_SESSION['token_CISVO']);?>" title="Salir del sistema" class="btn-exit-system">
 						<i class="zmdi zmdi-power"></i>
 					</a>
 				</li>

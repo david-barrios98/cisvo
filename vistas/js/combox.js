@@ -190,4 +190,5 @@ $(document).ready(function(){
     /*.fail(function(){
       alert('Hubo un errror al cargar las departamentos')
     })*/
+     
   })

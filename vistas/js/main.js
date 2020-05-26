@@ -2,8 +2,8 @@ $(document).ready(function(){
 	$("#checkMain").on("click", function() {  
 		$(".case").prop("checked", this.checked);  
 	  });  
-	  /* si todos los checkbox estan marcados, se marca el check que selecciona todos (linea 9-12),
-	   sino estan marcados todos se quita el check al que selecciona todos (linea 11-13)*/
+	  /* si todos los checkbox estan marcados, se marca el check que selecciona todos ,
+	   sino estan marcados todos se quita el check al que selecciona todos*/
 	  $(".case").on("click", function() {  
 		if ($(".case").length == $(".case:checked").length) {  
 		  $("#checkMain").prop("checked", true);  
@@ -24,31 +24,7 @@ $(document).ready(function(){
 			SubMenu.addClass('show-sideBar-SubMenu');
 		}
 	});
-	/*$('.form-control tooltips-general').on('click', function(){
-		if (this.value=='aprendiz'){
-			$.ajax({ 
-				beforeSend: function(){ 
-					$('#visitante').hide(); 
-					$('#funcionario').hide();
-				}
-			});
-		}
-	});*/
-    $('.btn-exit-system').on('click', function(e){
-        e.preventDefault();
-        swal({
-            title: 'Estas seguro?',
-            text: "Cerrar la sesión y salir del sistema",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#03A9F4',
-            cancelButtonColor: '#F44336',
-            confirmButtonText: '<i class="zmdi zmdi-run"></i> Si, Salir!',
-            cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Quedarme!'
-        }).then(function () {
-            window.location.href="index.html";
-        });
-    });
+    
 	$('.btn-menu-dashboard').on('click', function(e){
 		e.preventDefault();
 		var body=$('.dashboard-contentPage');
@@ -60,7 +36,8 @@ $(document).ready(function(){
 			body.addClass('no-paddin-left');
 			sidebar.addClass('hide-sidebar').removeClass('show-sidebar');
 		}
-	});
+    });
+    
 	$('.FormularioAjax').submit(function(e){
         e.preventDefault(); //PREVENIR EL ENVIO POR DEFECTO (URL)
 
@@ -120,10 +97,10 @@ $(document).ready(function(){
                 },
                 success: function (data){
                     respuesta.html(data);
-                    //alert('Bien :'+ data)
+                    //alert('Bien :'+data);
                 },
                 error: function() {
-                    respuesta.html(msjError);
+                   respuesta.html(msjError);
                     //alert('Mal :' +data);
                 }
             });

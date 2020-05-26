@@ -6,6 +6,7 @@
 <script src="<?php echo SERVERURL; ?>vistas/js/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/js/combox.js"></script>
 <script src="<?php echo SERVERURL; ?>vistas/js/main.js"></script>
+<?php include "./vistas/modulos/logoutScript.php"; ?>
 <script>
-	$.material.init();
+		$.material.init();
 </script>

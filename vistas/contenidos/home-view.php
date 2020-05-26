@@ -7,6 +7,7 @@
 	require_once "./controladores/usuarioControlador.php";
 	$ins = new usuarioControlador();
 	$conteo= $ins->datos_usuario_controlador("conteo", 0);
+
 ?>
 <div class="full-box text-center" style="padding: 30px 10px;">
 	<article class="full-box tile" >
