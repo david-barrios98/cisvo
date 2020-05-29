@@ -23,11 +23,9 @@
 			return $letra."-".$num; 
 		}
 
-		/*función para actualizar la hora final del inicio de sesión  en la Bitacora*/
-		protected function actualizar_bitacora($codigo,$hsora){
-			$sql=mainModelo::conectar_bd()->prepare("UPDATE BitacoraHoraFinal=:Hora WHERE BitacoraCodigo=:Codigo");
-			$sql->bindParam(":Hora",$hora);
-			$sql->bindParam(":Codigo",$codigo);
+		/*funcion para realizxar consultas*/
+		protected function consultas($string){
+			$sql=mainModelo::conectar_bd()->prepare($string);
 			$sql->execute();
 			return $sql;
 		}

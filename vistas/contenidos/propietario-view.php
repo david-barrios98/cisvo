@@ -63,19 +63,19 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="documento-txt" required="" maxlength="50">
+									  <input pattern="[0-9]{4,50}" class="form-control" type="text" name="documento-txt" required=""  title="El documento debe tener minimo 4 digitos!">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) de la persona *</label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="nombre-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="nombre-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) de la persona *</label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="apellido-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="apellido-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
@@ -132,7 +132,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Teléfono *</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" maxlength="10">
+								  	<input pattern="[0-9]{1,10}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" required>
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">

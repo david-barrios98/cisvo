@@ -145,38 +145,32 @@ $(document).ready(function(){
     })
 
     /*Carga el combobox del tipo de vehiculo*/
-    $('#tipovehiculo-txt').on('change', function(){
-      var id = $('#tipovehiculo-txt').val()
-      $.ajax({
-        type: 'POST',
-        cache: false,
-        url: '../core/configComboMarVeh.php',
-        data: {'id': id}
-      })
-      .done(function(tipoveh){
-        $('#tipovehiculo-txt').html(tipoveh)
-      })
-      /*.fail(function(){
-        alert('Hubo un errror al cargar los marca de vehiculos')
-      })*/
+    
+    $.ajax({
+      type: 'POST',
+      cache: false,
+      url: '../core/CBVehiculoTipo.php'
     })
+    .done(function(tipoveh){
+      $('#tipovehiculo-txt').html(tipoveh)
+    })
+    /*.fail(function(){
+      alert('Hubo un errror al cargar los marca de vehiculos')
+    })*/
     
     /*Carga el combobox de las marcas de vehiculo*/
-    $('#marcavehiculo-txt').on('change', function(){
-      var id = $('#marcavehiculo-txt').val()
-      $.ajax({
-        type: 'POST',
-        cache: false,
-        url: '../core/configComboMarVeh.php',
-        data: {'id': id}
-      })
-      .done(function(marcasvehiculo){
-        $('#marcavehiculo-txt').html(marcasvehiculo)
-      })
-      /*.fail(function(){
-        alert('Hubo un errror al cargar los marca de vehiculos')
-      })*/
+    $.ajax({
+      type: 'POST',
+      cache: false,
+      url: '../core/CBVehiculoMarca.php'
     })
+    .done(function(marcasvehiculo){
+      $('#marcavehiculo-txt').html(marcasvehiculo)
+    })
+    /*.fail(function(){
+      alert('Hubo un errror al cargar los marca de vehiculos')
+    })*/
+    
 
     /*Carga el combobox de tipos de solicitudes*/
     $.ajax({

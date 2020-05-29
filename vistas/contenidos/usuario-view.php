@@ -53,19 +53,19 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9-]{1,50}" class="form-control" type="text" name="documento-txt" id="documento-txt" required="" maxlength="50">
+									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="documento-txt" required=""  title="El documento debe tener minimo 4 digitos!">
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) *</label>
-								  	<input class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) *</label>
-								  	<input class="form-control" type="text" name="apellido-txt" id="apellido-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="apellido-txt" id="apellido-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -124,7 +124,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Teléfono *</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" maxlength="15">
+								  	<input pattern="[0-9]{1,10}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" required>
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">

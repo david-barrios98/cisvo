@@ -35,7 +35,10 @@
 			<h3 class="panel-title"><i class="zmdi zmdi-plus"></i> &nbsp; NUEVA SOLICITUD</h3>
 		</div>
 		<div class="panel-body">
-			<form>
+			 <form action="<?php echo SERVERURL?>ajax/solicitudesAjax.php" method="POST" 
+			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="off" 
+			 enctype="multipart/form-data" > 
+			 	<!--Datos de la persona -->
 		    	<fieldset>
 		    		<legend><i class="zmdi zmdi-account-box"></i> &nbsp; Información personal</legend>
 		    		<div class="container-fluid">
@@ -43,19 +46,19 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="documento-txt" required="" maxlength="30">
+								  	<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required title="El documento debe tener minimo 4 digitos!">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) de la persona *</label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="nombre-txt" required="" maxlength="40">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}"  class="form-control" type="text" name="nombre-txt" required>
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) de la persona *</label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="apellido-txt" required="" maxlength="40">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="apellido-txt" required="" >
 								</div>
 		    				</div>
 							
@@ -63,6 +66,7 @@
 		    		</div>
 		    	</fieldset>
 		    	<br>
+				<!--Datos de la solicitud -->
 		    	<fieldset>
 		    		<legend><i class="zmdi zmdi-assignment-o"></i> &nbsp; Detalle de solicitud</legend>
 		    		<div class="container-fluid">
@@ -71,7 +75,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Tipo de solicitud *</label>				  	
-									<select class="form-control" name ="tiposolicitud-txt" id="tiposolicitud-txt">
+									<select class="form-control" name ="tiposolicitud-txt" id="tiposolicitud-txt" required="">
 									</select>
 								</div>
 							</div>
@@ -80,24 +84,26 @@
 								<div class="form-group label-floating">
 								  	<label class="control-label">Selecione el objeto o vehiculo *</label>				  	
 									<select class="form-control" name ="objveh-txt" id="objveh-txt">
+									<option value="AAA-000">AAA-000</option>
 									</select>
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-12">
 					    		<div class="form-group label-floating">
 								  	<label class="control-label">Ingrese la solucitud, petición o queja*</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="descripsolicitud-txt" id="descripsolicitud-txt" required="">
-									
+									<textarea class="form-control" name="descripsolicitud-txt" id="descripsolicitud-txt" required cols="30" rows="2"></textarea>
 								</div>
 		    				</div>
 		    			</div>
 		    		</div>
 		    	</fieldset>
 		    	<br>
+				<!-- Botones -->
 			    <p class="text-center" style="margin-top: 20px;">
-					<button type="reset" class="btn btn-danger btn-raised btn-sm"><i class="zmdi zmdi-roller"></i> &nbsp; Limpiar</button>
+					<!-- <button type="reset" class="btn btn-danger btn-raised btn-sm"><i class="zmdi zmdi-roller"></i> &nbsp;&nbsp; Limpiar</button>-->
 			    	<button type="submit" class="btn btn-info btn-raised btn-sm"><i class="zmdi zmdi-floppy"></i> Guardar</button>
 			    </p>
+				<div class="RespuestaAjax"></div><!--MOSTRARÁ LA RESPUESTA DEL AJAX-->
 		    </form>
 		</div>
 	</div>

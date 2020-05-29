@@ -100,19 +100,19 @@
 								<div class="col-xs-12 col-sm-6">
 									<div class="form-group label-floating">
 										<label class="control-label">No. Documento *</label>
-										<input pattern="[0-9-]{1,30}" class="form-control" type="text" name="docpropietario-txt" required="" maxlength="50">
+										<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required="" maxlength="30" title="El documento debe tener minimo 4 digitos!">
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-6">
 									<div class="form-group label-floating">
 										<label class="control-label">Nombre(s) *</label>
-										<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="nombrepropietario-txt" required="" maxlength="50">
+										<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="nombrepropietario-txt" required="" maxlength="50">
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-6">
 									<div class="form-group label-floating">
 										<label class="control-label">Apellido(s) *</label>
-										<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]" class="form-control" type="text" name="apellidopropietario-txt" required="" maxlength="50">
+										<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="apellidopropietario-txt" required="" maxlength="50">
 									</div>
 								</div>
 							</div>

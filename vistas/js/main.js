@@ -100,7 +100,7 @@ $(document).ready(function(){
                     //alert('Bien :'+data);
                 },
                 error: function() {
-                   respuesta.html(msjError);
+                    respuesta.html(msjError);
                     //alert('Mal :' +data);
                 }
             });

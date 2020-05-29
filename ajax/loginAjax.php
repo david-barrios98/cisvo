@@ -3,7 +3,6 @@
     require_once "../core/configGeneral.php";
 
     if(isset($_GET['Token'])){
-        echo "entro";
         require_once "../controladores/loginControlador.php";
         $logout= new loginControlador();
         echo $logout->cerrar_sesion_controlador();
