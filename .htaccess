@@ -3,4 +3,4 @@ Options All -Indexes
 RewriteEngine On
 RewriteRule ^([a-zA-Z0-9/]+)$ index.php?views=$1
 
-#Archivo para reistringir el servidor apache
+#Archivo para reistringir el servidor apache, Prueba commit
