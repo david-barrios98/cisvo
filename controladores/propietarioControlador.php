@@ -62,7 +62,8 @@
 						"Texto"=>"El Correo ingresado, ya se encuentra registrado en el sistema!",
 						"Tipo"=>"error"
 					];
-				}else{					
+				}else{	
+					session_start(['name'=>'S_CISVO']);			
 					$dataPropietario=[
 						"Id"=>$id,
 						"Nombre"=>$nombre,
@@ -75,7 +76,7 @@
 						"Genero"=>$genero,
 						"Foto"=>$foto,
 						"Estado"=>"A",
-						"Usuario"=>"1002"
+						"Usuario"=>$_SESSION["usuario_CISVO"]
 					];					
 					$guardarPropietario=propietarioModelo::registrar_propietario_modelo($dataPropietario);
 

@@ -15,24 +15,25 @@
 		*@param $datos parametro tipo array para crear usuario 
 		*/
 		protected function agregar_usuarios_modelo($datos){
-			$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
-			/*Funcion para vincular un parametro al nombre de la variable espcificada */
-			$sql->bindParam(":Id",$datos['Doc']);
+			//$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
+			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO tbl_usuario VALUES(:Doc,:Nombre,:Apellido,:Sexo,:Fnac,:Direccion,:Municipio,:Correo,:Telefono,:Clave,:Rol,:Foto,:Estado)");
+			/*Funcion para vincular un parametro al nombre de la variable espcificada */	
+			$sql->bindParam(":Doc",$datos['Doc']);
 			$sql->bindParam(":Nombre",$datos['Nombre']);
 			$sql->bindParam(":Apellido",$datos['Apellido']);
+			$sql->bindParam(":Sexo",$datos['Sexo']);
+			$sql->bindParam(":Fnac",$datos['Fnac']);
 			$sql->bindParam(":Direccion",$datos['Direccion']);
+			$sql->bindParam(":Municipio",$datos['Municipio']);
+			$sql->bindParam(":Correo",$datos['Correo']);
 			$sql->bindParam(":Telefono",$datos['Telefono']);
 			$sql->bindParam(":Clave",$datos['Clave']);
-			$sql->bindParam(":Fnac",$datos['Fnacimiento']);
-			$sql->bindParam(":Correo",$datos['Correo']);
-			$sql->bindParam(":Estado",$datos['Estado']);
-			$sql->bindParam(":Municipio",$datos['Municipio']);
-			$sql->bindParam(":Sexo",$datos['Sexo']);
-			$sql->bindParam(":Foto",$datos['Foto']);
 			$sql->bindParam(":Rol",$datos['Rol']);
+			$sql->bindParam(":Foto",$datos['Foto']);
+			$sql->bindParam(":Estado",$datos['Estado']);
 			$sql->execute();
-
-			$email_to = $datos['Correo'];
+			return $sql;
+			/*$email_to = $datos['Correo'];
 			$email_subject = "Confirma tu email Photogram";
 			$email_from = "reply.localhost.com";
 
@@ -45,9 +46,9 @@
 			$headers = 'From: '.$email_from."\r\n".
 			'Reply-To: '.$email_from."\r\n" .
 			'X-Mailer: PHP/' . phpversion();
-			mail($email_to, $email_subject, $email_message, $headers);
+			mail($email_to, $email_subject, $email_message, $headers);*/
 
-			return $sql;
+			
 		}
 
 		protected function datos_usuario_modelo($tipo, $id_usu){
@@ -79,7 +80,7 @@
 		}
 
 		protected function eliminar_usuario_modelo($id){
-			$query=mainModelo::conectar_bd()->prepare("DELETE FROM tbl_usuario WHERE Usu_Doc=:doc");
+			$query=mainModelo::conectar_bd()->prepare("UPDATE tbl_usuario SET Usu_Estado='I' WHERE Usu_Doc=:doc");
 			$query->bindParam(":doc", $id);
 			$query->execute();
 			return $query;

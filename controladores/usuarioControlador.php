@@ -18,7 +18,6 @@
 		 	para evitar inyecciones sql por los formularios
 			*/
 			$doc=mainModelo::limpiar_cadena($_POST['documento-txt']);
-			echo $doc;
 			$nombre=mainModelo::limpiar_cadena($_POST['nombre-txt']);
 			$apellido=mainModelo::limpiar_cadena($_POST['apellido-txt']);
 			$telefono=mainModelo::limpiar_cadena($_POST['telefono-txt']);
@@ -32,7 +31,7 @@
 			$rol=mainModelo::limpiar_cadena($_POST['roluser-txt']);
 
 			
-			if ($genero=="Masculino") {
+			if ($genero=="M") {
 				$foto="AdminMale.png";
 			} else {
 				$foto="AdminFemale.png";
@@ -88,15 +87,16 @@
 								"Doc"=>$doc,
 								"Nombre"=>$nombre,
 								"Apellido"=>$apellido,
-								"Telefono"=>$telefono,
-								"Direccion"=>$direccion,
 								"Sexo"=>$genero,
-								"Fnacimiento"=>$fnacimiento,
+								"Fnac"=>$fnacimiento,
+								"Direccion"=>$direccion,
 								"Municipio"=>$municipio,
+								"Correo"=>$email,
+								"Telefono"=>$telefono,
 								"Clave"=>$clave,
-								"Estado"=>'A',
 								"Rol"=>$rol,
-								"Correo"=>$email
+								"Foto"=>$foto,
+								"Estado"=>'A'
 							];
 							
 							$guardarAdmin=usuarioModelo::agregar_usuarios_modelo($dataAdmin);

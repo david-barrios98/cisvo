@@ -19,7 +19,6 @@
         *@param $datos, Arrary que trae la informacion del controlador.
         **/
         protected function registrar_solicitud_modelo($datos){
-            var_dump($datos);
             $sql=mainModelo::conectar_bd()->prepare("INSERT INTO tbl_solicitudes VALUES(:Codigo,:Tipo,:Descripcion,:FechaHora,:Estado,:Propietario,:Objeto,:Vehiculo,:Usuario)");
             $sql->bindParam(":Codigo",$datos['Codigo']);
             $sql->bindParam(":Tipo",$datos['Tipo']);
@@ -30,6 +29,17 @@
             $sql->bindParam(":Objeto",$datos['Objeto']);
             $sql->bindParam(":Vehiculo",$datos['Vehiculo']);
             $sql->bindParam(":Usuario",$datos['Usuario']);
+            $sql->execute();
+            return $sql;
+        }
+
+        /**
+        *La siguiente funcion es la responsable para eliminar una solicitud de la base de datos.
+        *@param $datos,  trae el codigo del la solicitud desde el controlador.
+        **/
+        protected function eliminar_solicitud_modelo($Codigo){
+            $sql=mainModelo::conectar_bd()->prepare("UPDATE tbl_solicitudes SET Sol_Estado='I' WHERE Sol_Cod=:Codigo");
+            $sql->bindParam(":Codigo",$datos['Codigo']);
             $sql->execute();
             return $sql;
         }

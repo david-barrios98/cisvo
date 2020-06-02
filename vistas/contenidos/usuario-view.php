@@ -37,7 +37,7 @@
 		</div>
 		<div class="panel-body">
 			<form action="<?php echo SERVERURL?>ajax/usuarioAjax.php" method="POST" 
-			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="on" 
+			 data-form="save" class="FormularioAjax" name="FormularioAjax" autocomplete="off" 
 			 enctype="multipart/form-data" > 
 			 	<!-- Datos personales -->
 		    	<fieldset>
@@ -53,7 +53,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="documento-txt" required=""  title="El documento debe tener minimo 4 digitos!">
+									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="documento-txt" required=""  title="El documento debe tener minimo 4 digitos!"  maxlegth="50">
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-6">
