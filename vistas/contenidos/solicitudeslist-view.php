@@ -24,13 +24,23 @@
 	  	</li>
 	</ul>
 </div>
+
+<?php
+	require_once "./controladores/solicitudesControlador.php";
+	$insSolicitud= new solicitudControlador();
+?>
 <div class="container-fluid">
 	<div class="panel panel-success">
 		<div class="panel-heading">
 			<h3 class="panel-title"><i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTADO DE SOLICITUDES</h3>
 		</div>
 		<div class="panel-body">
-			<div class="table-responsive">
+
+			<?php
+				$pagina = explode("/", $_GET['views']);
+				echo $insSolicitud->cargar_tabla_solicitudes_controlador($pagina[1],2);
+			?>
+			<!--<div class="table-responsive">
 				<table class="table table-hover text-center">
 					<thead>
 						<tr>
@@ -82,7 +92,7 @@
 					<li><a href="javascript:void(0)">5</a></li>
 					<li><a href="javascript:void(0)">»</a></li>
 				</ul>
-			</nav>
+			</nav>-->
 		</div>
 	</div>
 </div>

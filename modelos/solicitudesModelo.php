@@ -35,14 +35,21 @@
 
         /**
         *La siguiente funcion es la responsable para eliminar una solicitud de la base de datos.
-        *@param $datos,  trae el codigo del la solicitud desde el controlador.
+        *@param $Codigo,  trae el codigo del la solicitud desde el controlador.
         **/
         protected function eliminar_solicitud_modelo($Codigo){
             $sql=mainModelo::conectar_bd()->prepare("UPDATE tbl_solicitudes SET Sol_Estado='I' WHERE Sol_Cod=:Codigo");
-            $sql->bindParam(":Codigo",$datos['Codigo']);
+            $sql->bindParam(":Codigo",$Codigo);
             $sql->execute();
             return $sql;
         }
+
+        protected function consultar_solicitud($dato){
+            $query="SELECT * FROM tbl_solicitudes WHERE Sol_Cod='$dato' AND Sol_Estado='A'";
+            $sql=mainModelo::consultas($query);
+            return $sql;
+        }
+
 
         protected function consultar_propietario($dato){
             $query="SELECT * FROM tbl_propietario_poseedor WHERE Pro_Doc='$dato' AND Pro_Estado='A'";
@@ -53,6 +60,13 @@
         protected function conteo(){
             $query="SELECT * FROM tbl_solicitudes";
             $sql=mainModelo::consultas($query);
+            return $sql;
+        }
+
+        protected function config_tabla_solicitudes_modelo($inicio,$regxpagina){
+            $sql="SELECT SQL_CALC_FOUND_ROWS * FROM tbl_solicitudes INNER JOIN tbl_propietario_poseedor ON Pro_Doc=Sol_Pro_Doc WHERE Sol_Estado!='I' LIMIT $inicio,$regxpagina";
+            $sql=mainModelo::conectar_bd()->prepare($sql);
+            $sql->execute();
             return $sql;
         }
     }
