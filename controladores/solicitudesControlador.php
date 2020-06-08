@@ -75,12 +75,12 @@
             $regxpagina=mainModelo::limpiar_cadena($regxpagina);
             $tabla="";
 
-			$pagina = isset($pagina) ? (int)$pagina : 1;  //pagina actual
+			$pagina= (isset($pagina) && $pagina>0) ? (int) $pagina  : 1; //pagina actual
 			$inicio = ($pagina > 1) ? ($pagina * $regxpagina - $regxpagina) : 0 ;  //indice de Registro a cargar por pagina
             
-            $datos=solicitudModelo::config_tabla_solicitudes_modelo($pagina,$regxpagina);
+            $datos=solicitudModelo::config_tabla_solicitudes_modelo($inicio,$regxpagina);
 
-            $total_registros = solicitudModelo::conteo()->rowCount();
+            $total_registros = solicitudModelo::conteo(1)->rowCount();
             $numeroPaginas = ceil($total_registros / $regxpagina);   //Redondear
             
             $tabla.='<div class="table-responsive"> 
@@ -108,14 +108,17 @@
                         <tr>
                             <td>'.$conteo.'</td>
                             <td>'.$columna['Pro_Nombre']." ".$columna['Pro_Apellido'].'</td>
-                            <td>'.$columna['Sol_Tipo'].'</td>
-                            <td>'.$columna['Sol_Desc'].'</td>
+                            <td>'.$columna['Det_Desc'].'</td>
+                            <td> 
+                                <button type="submit" class="btn btn-info btn-raised btn-xs" title="Ver">
+                                <i class="zmdi zmdi-eye"></i>
+                            </button></td>
                             <td>'.$columna['Sol_Fecha_Hora'].'</td>
                             <td>'.$columna['Sol_Estado'].'</td>
                             <td>'.$columna['Sol_Vehiculo'].'</td>
-                            <td>'.$columna['Sol_Usu_Doc'].'</td>
+                            <td>'.$columna['Usu_Nombre']." ".$columna['Usu_Apellido'].'</td>
                             <td>
-                                <a href="'.SERVERURL.'solicitud/?solicitud='.mainModelo::encryption($columna['Sol_Cod']).'" class="btn btn-success btn-raised btn-xs">
+                                <a href="'.SERVERURL.'solicitud/?solicitud='.mainModelo::encryption($columna['Sol_Cod']).'" class="btn btn-success btn-raised btn-xs" title="Editar">
                                     <i class="zmdi zmdi-border-color"></i>
                                 </a>
                             </td>
@@ -123,8 +126,8 @@
                                 <form action="'.SERVERURL.'ajax/solicitudesAjax.php" method="POST" 
                                 data-form="delete" class="FormularioAjax" name="FormularioAjax" autocomplete="off" 
                                 enctype="multipart/form-data">
-                                    <input type="hidden" name="id_solicitud" id="id_solicitud" value="'.mainModelo::encryption($columna['Sol_Cod']).'">
-                                    <button type="submit" class="btn btn-danger btn-raised btn-xs">
+                                    <input type="hidden" name="id_solicitud"  value="'.mainModelo::encryption($columna['Sol_Cod']).'">
+                                    <button type="submit" class="btn btn-danger btn-raised btn-xs" title="Eliminar">
                                         <i class="zmdi zmdi-delete"></i>
                                     </button>
                                     <div class="RespuestaAjax"></div>
@@ -151,26 +154,29 @@
             </table>
             </div>";
 
+            //Paginador
             if($total_registros >= 1 && $pagina <= $numeroPaginas){
 				$tabla.= '<nav class="text-center">
 				<ul class="pagination pagination-sm">';
-
+                
 				if($pagina==1){
-					$tabla.= '<li class="disabled"><a><-</a></li>';
-				}else{
-					$tabla.= '<li><a href="'.SERVERURL.'solicitudeslist/'.($pagina-1).'/"><-</a></li>';
-				}
+                    $tabla.='<li class="disabled"><a>
+                    <i class="zmdi zmdi-arrow-left"></i></a></li>';
+                }else{
+                    $tabla.='<li><a href="'.SERVERURL.'solicitudeslist/'.($pagina-1).'/">
+                    <i class="zmdi zmdi-arrow-left"></i></a></li>';
+                }
 				for($i = 1; $i <= $numeroPaginas; $i++){ //Identifica la pagina Activa
-					if ($pagina === $i) { 
+					if ($pagina == $i) { 
 						$tabla.= '<li class="active"><a href="'.SERVERURL.'solicitudeslist/'.$i.'/">'.$i.'</a></li>';
 					} else {
 						$tabla.= '<li><a href="'.SERVERURL.'solicitudeslist/'.$i.'/">'.$i.'</a></li>';
 					}
 				}
 				if($pagina==$numeroPaginas){
-					$tabla.= '<li class="disabled"><a>-></a></li>';
+					$tabla.= '<li class="disabled"><a><i class="zmdi zmdi-arrow-right"></i></a></li>';
 				}else{
-					$tabla.= '<li><a href="'.SERVERURL.'solicitudeslist/'.($pagina+1).'/">-></a></li>';
+					$tabla.= '<li><a href="'.SERVERURL.'solicitudeslist/'.($pagina+1).'/"><i class="zmdi zmdi-arrow-right"></i></a></li>';
 				}
 				
 				$tabla.= '</ul>

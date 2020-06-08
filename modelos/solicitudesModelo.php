@@ -57,14 +57,30 @@
             return $sql;
         }
 
-        protected function conteo(){
-            $query="SELECT * FROM tbl_solicitudes";
-            $sql=mainModelo::consultas($query);
+        protected function conteo($Option){
+            if($Option==1){
+                $query="SELECT * FROM tbl_solicitudes WHERE Sol_Estado!='I'";
+                $sql=mainModelo::consultas($query);
+            }else{
+                $query="SELECT * FROM tbl_solicitudes";
+                $sql=mainModelo::consultas($query);
+            }
+            
             return $sql;
         }
 
+
         protected function config_tabla_solicitudes_modelo($inicio,$regxpagina){
-            $sql="SELECT SQL_CALC_FOUND_ROWS * FROM tbl_solicitudes INNER JOIN tbl_propietario_poseedor ON Pro_Doc=Sol_Pro_Doc WHERE Sol_Estado!='I' LIMIT $inicio,$regxpagina";
+            $sql="SELECT SQL_CALC_FOUND_ROWS * 
+            FROM tbl_solicitudes 
+            INNER JOIN tbl_propietario_poseedor 
+            ON Pro_Doc=Sol_Pro_Doc 
+            INNER JOIN tbl_usuario
+            ON Usu_Doc= Sol_Usu_doc
+            INNER JOIN tbl_deta_parametro
+            ON Det_Codigo= Sol_Tipo
+            WHERE Sol_Estado!='I'
+            LIMIT $inicio,$regxpagina";
             $sql=mainModelo::conectar_bd()->prepare($sql);
             $sql->execute();
             return $sql;
