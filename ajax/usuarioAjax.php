@@ -15,8 +15,14 @@
 		
 		echo $insUsu->eliminar_usuario_controlador();
 
-	}elseif(isset($_POST['id-usu'])){
-		echo $insUsu->actualizar_usuario_controlador();
+	}elseif(isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['fnac']) && isset($_POST['direccion'])){
+		echo $insUsu->modificar_datos_usuario_controlador();
+	}elseif(isset($_POST['celular']) && isset($_POST['email'])){
+		echo $insUsu->modificar_cuenta_usuario_controlador();
+
+	}elseif(isset($_POST['passAntigua']) && isset($_POST['passNueva']) && isset($_POST['passConfirm'])){
+		echo $insUsu->modificar_clave_usuario_controlador();
+
 	}else{
 		session_start();
 		session_destroy();

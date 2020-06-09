@@ -13,30 +13,30 @@
 		
 		//FUNCION PARA AGREGAR USUARIOS
 		public function agregar_usuario_controlador(){
+			$mail = new PHPMailer(true);
 			/*Captura de datos del formulario admin-view, En variables, 
 			pasando por una funcion llamada limpiar_cadena(archivo mainModelo)
 		 	para evitar inyecciones sql por los formularios
 			*/
-			$doc=mainModelo::limpiar_cadena($_POST['documento-txt']);
-			$nombre=mainModelo::limpiar_cadena($_POST['nombre-txt']);
-			$apellido=mainModelo::limpiar_cadena($_POST['apellido-txt']);
-			$telefono=mainModelo::limpiar_cadena($_POST['telefono-txt']);
-			$fnacimiento=mainModelo::limpiar_cadena($_POST['fechanac-txt']);
-			$direccion=mainModelo::limpiar_cadena($_POST['direccion-txt']);
-			$pass1=mainModelo::limpiar_cadena($_POST['password1-txt']);
-			$pass2=mainModelo::limpiar_cadena($_POST['password2-txt']);
-			$email=mainModelo::limpiar_cadena($_POST['email-txt']);
-			$genero=mainModelo::limpiar_cadena($_POST['genero-txt']);
-			$municipio=mainModelo::limpiar_cadena($_POST['municipio-txt']);
-			$rol=mainModelo::limpiar_cadena($_POST['roluser-txt']);
+			$dni=mainModelo::limpiar_cadena($_POST['dni-reg']);
+			$nombre=mainModelo::limpiar_cadena($_POST['nombre-reg']);
+			$apellido=mainModelo::limpiar_cadena($_POST['apellido-reg']);
+			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
+			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
+			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
+			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
+			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
+			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
+			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
+			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
+			$rol=mainModelo::limpiar_cadena($_POST['rol-reg']);
 
-			
-			if ($genero=="M") {
+			/*Foto segun el sexo
+			if ($genero=="Masculino") {
 				$foto="AdminMale.png";
 			} else {
 				$foto="AdminFemale.png";
-			}
-
+			}*/
 			/*comprobacion de contraseña, que sean identicas*/
 			if ($pass1 != $pass2) {
 				$alerta=[
@@ -47,7 +47,7 @@
 				];
 			}else{
 				/*Validación de documento en el sistema*/
-				$consulta_doc=usuarioModelo::ejecutar_consulta_usuario($doc);
+				$consulta_doc=usuarioModelo::ejecutar_consulta_usuario($dni);
 				if ($consulta_doc->rowCount()>=1) {
 					$alerta=[
 						"Alerta"=>"simple",
@@ -73,7 +73,7 @@
 						];
 					}else{
 						/*Validación de Usuario en el sistema*/
-						$consulta_usuario=usuarioModelo::ejecutar_consulta_usuario($doc);
+						$consulta_usuario=usuarioModelo::ejecutar_consulta_usuario($dni);
 						if($consulta_usuario->rowCount()>=1){
 							$alerta=[
 								"Alerta"=>"simple",
@@ -84,36 +84,94 @@
 						}else{
 							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
 							$dataAdmin=[
-								"Doc"=>$doc,
+								"DNI"=>$dni,
 								"Nombre"=>$nombre,
 								"Apellido"=>$apellido,
-								"Sexo"=>$genero,
-								"Fnac"=>$fnacimiento,
-								"Direccion"=>$direccion,
-								"Municipio"=>$municipio,
-								"Correo"=>$email,
 								"Telefono"=>$telefono,
+								"Direccion"=>$direccion,
+								"Sexo"=>$genero,
+								"Fnacimiento"=>$fnacimiento,
+								"Municipio"=>$municipio,
 								"Clave"=>$clave,
+								//"Estado"=>'A',
 								"Rol"=>$rol,
-								"Foto"=>$foto,
-								"Estado"=>'A'
+								"Correo"=>$email
 							];
-							
 							$guardarAdmin=usuarioModelo::agregar_usuarios_modelo($dataAdmin);
 
 							if ($guardarAdmin->rowCount()>=1) {
-								$alerta=[
-									"Alerta"=>"limpiar",
-									"Titulo"=>"Usuario registrado",
-									"Texto"=>"Registro exitoso!",
-									"Tipo"=>"success"
-								];
+								try {
+									//Server settings
+									$mail->SMTPOptions = array(
+										'ssl' => array(
+										'verify_peer' => false,
+										'verify_peer_name' => false,
+										'allow_self_signed' => true
+										)
+									);
+								
+									$mail->SMTPDebug = 0;                      // Enable verbose debug output
+									$mail->isSMTP();                                            // Send using SMTP
+									$mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+									$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+									$mail->Username   = EMAIL_HOST;                    // SMTP username
+									$mail->Password   = EMAIL_KEY;                               // SMTP password
+									$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+									$mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+								
+									//Recipients
+									$mail->setFrom(EMAIL_HOST, 'CISVO WEB');
+									$mail->addAddress($email, $nombre);     // Add a recipient
+								
+									// Attachments
+									//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+									//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+								
+									// Content
+									$mail->isHTML(true);                                  // Set email format to HTML
+									$mail->Subject = 'REGISTRO EXITOSO!';
+									$correo = "<div style='width:90%; border:4px ridge blue; padding:6px;'>";
+									$correo .= "<h1 color='black';>EN BUENA HORA, HAS REALIZADO TU REGISTRO DE FORMA EXITOSA </h1>";
+									$correo .= "</div>";
+									$correo .= "<div width:90%;>";
+									//$correo .= "<img src='CISVO/vistas/assets/img/logo_cisvo.png'  width='100%'>"; // OJO con la imagen. Hablaremos de esto en el próximo apartado.
+									$correo .= "Sr(a) $nombre, Se ha completado de forma exitosa tu registro en nuestra plataforma CISVO, el
+									usuario y clave sumistrado sera para utilización netamente laboral del CENTRO INDUSTRIAL Y DE AVIACIÓN <br><br>";
+									$correo .= "Tus credenciales para inicio de sesión son:";
+									$correo .= "<ul>";
+									$correo .= "<li>Usuario: $dni</li>";
+									$correo .= "<li>Clave: $pass2</li><br>";
+									$correo .= "<p>Para iniciar sesion haga click <a href='http://localhost/CISVO/' target='_blank'>aquí</a></p>";
+									$correo .= "</ul>";
+									$correo .= "<p>NOTA: El usuario y clave anteriormente suminstrados deben ser de caracter personal, no permite que terceros hagan uso de esto ya que puede generarle
+									graves problemas laborales</p>";
+									$correo .= "</div>";
+									// En nuestro correo incluimos hasta un formulario.
+									$mail->Body = $correo;
+									$mail->AltBody = 'Para mas infomación contactate a tu jefe de area';
+							
+									if($mail->send()) {
+										//echo 'SE ENVIO CORREO SATISFACTORIAMENTE';
+										$alerta=[
+											"Alerta"=>"limpiar",
+											"Titulo"=>"Administrador registrado",
+											"Texto"=>"NOTA: Su usuario y clave fueron enviados al correo ".$email,
+											"Tipo"=>"success"
+										];
+									} else {
+										//echo 'Detalles del error: '.$mail->ErrorInfo;
+									}
+									
+								} catch (Exception $e) {
+									///echo "FALLIDO ENVIO: $e";
+								}
+								
 							}else{
 								
 								$alerta=[
 									"Alerta"=>"simple",
 									"Titulo"=>"Ocurrio un error inesperado",
-									"Texto"=>"No se pudo registrar al usuario",
+									"Texto"=>"No se pudo registrar al Usuario",
 									"Tipo"=>"error"
 								];
 							}
@@ -133,22 +191,20 @@
 		 * @return $tabla retorna la estructura de la tabla con su consulta 
 		 */
 		public function config_tabla_controlador($pagina, $regxpagina){
+			if($_SESSION['rol_CISVO']=="A"){
+				$rol="admin";
+			}else{
+				$rol="con acceso restringido";
+			}
 			//se limpia la cadena
 			$pagina=mainModelo::limpiar_cadena($pagina);
 			$regxpagina=mainModelo::limpiar_cadena($regxpagina);
 			//$id_usuario=mainModelo::limpiar_cadena($id_usuario;
-			$tabla="";
-
+			$tabla=""; //variable que almacenará los datos de la consulta de los usuarios
 			$pagina = isset($pagina) ? (int)$pagina : 1;  //pagina actual
 			$inicio = ($pagina > 1) ? ($pagina * $regxpagina - $regxpagina) : 0 ;  //indice de Registro a cargar por pagina
-			$conexion = mainModelo::conectar_bd();
-			$datos = $conexion->prepare("SELECT SQL_CALC_FOUND_ROWS * FROM tbl_usuario WHERE Usu_Rol !='A' ORDER BY Usu_Nombre ASC LIMIT $inicio, $regxpagina");
-			$datos->execute();
-			//$datos= usuarioModelo::cargar_tabla_modelo($inicio, $regxpagina);
-			$datos = $datos->fetchAll();
-			$total_registros = $conexion->query('SELECT FOUND_ROWS() as total');
-			//$total_registros = usuarioModelo::total_registros_tabla();
-			$total_registros = $total_registros->fetch()['total'];  //Devuelve un registro (50)
+			$datos = usuarioModelo::cargar_tabla_modelo($inicio, $regxpagina);
+			$total_registros = usuarioModelo::total_registros_tabla();
 			$numeroPaginas = ceil($total_registros / $regxpagina);   //Redondear fracciones hacia arriba
 
 			$tabla.= '<div class="table-responsive">
@@ -194,7 +250,7 @@
 								<td scope="col">'.$columna['Usu_Estado'].'</td>
 								<td scope="col">'.$columna['Usu_Registro'].'</td>
 								<td>
-									<a href="'.SERVERURL.'usuario/?usuario='.mainModelo::encryption($columna['Usu_Doc']).'" class="btn btn-success btn-raised btn-xs">
+									<a href="'.SERVERURL.'usuario/'.$rol."/".mainModelo::encryption($columna['Usu_Doc']).'" class="btn btn-success btn-raised btn-xs">
 										<i class="zmdi zmdi-border-color"></i>
 									</a>
 								</td>
@@ -224,6 +280,7 @@
 						$tabla.= '<tr>
 							<td colspan="15"> no hay registos de usuarios</td>
 						</tr>';
+						//$tabla.= var_dump($datos);
 					}
 				}
 
@@ -300,25 +357,204 @@
 			$tipo =  mainModelo::limpiar_cadena($tipo);
 
 			return usuarioModelo::datos_usuario_modelo($tipo, $id_usu);
-			/*$id = mainModelo::decryption($_POST['id-usuario']);
-			$id =  mainModelo::limpiar_cadena($id);
+		}
 
-			$nombre=mainModelo::limpiar_cadena($_POST['nombre-reg']);
-			$apellido=mainModelo::limpiar_cadena($_POST['apellido-reg']);
-			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
-			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
-			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
-			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
-			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
-			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
-			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
+		public function datos_usuario_cuenta_controlador($doc){
+			$doc= mainModelo::limpiar_cadena($doc);
+			$doc=mainModelo::decryption($doc);
+			return usuarioModelo::ejecutar_consulta_usuario($doc);
+		}
+
+		public function modificar_cuenta_usuario_controlador(){
+			session_start(['name'=>'S_CISVO']);
+			extract($_POST);
+			$doc= mainModelo::limpiar_cadena($documento);
+			$doc=mainModelo::decryption($doc);
+			$celular= mainModelo::limpiar_cadena($celular);
+			$correo= mainModelo::limpiar_cadena($email);
+			//$rol= mainModelo::limpiar_cadena($rolusu);
+			$estado= mainModelo::limpiar_cadena($estadousu);
+			//$foto = "foto_actualizada.png";
+			$datos=[
+				"Documento"=>$doc,
+				"Celular"=>$celular,
+				"Correo"=>$correo,
+				//"Rol"=>$rol,
+				"Estado"=>$estado
+				//"Foto"=>$foto
+			];
+
+			$consulta_usuario =usuarioModelo::ejecutar_consulta_usuario($doc);
+			//NUEVA CONSULTA CON PARAMETRO DE CORREO Y SECCION
+			$info = $consulta_usuario->fetch();
+			if($consulta_usuario->rowCount()==1){
+				if($info['Usu_Doc'] != $_SESSION['usuario_CISVO']){
+					$alerta=[
+						"Alerta"=>"simple",
+						"Titulo"=>"Ocurrio un error inesperado",
+						"Texto"=>"Usted intenta modificar infomación de otro usuario/adminsutador",
+						"Tipo"=>"error"
+					];
+				}else{
+					if($info['Usu_Correo'] == $email){
+						$actualizacion=usuarioModelo::modificar_cuenta_usuario_modelo($datos);
+						if($actualizacion>0){
+							$alerta=[
+								"Alerta"=>"limpiar",
+								"Titulo"=>"Administrador modificado1",
+								"Texto"=>"Registro exitoso!",
+								"Tipo"=>"success"
+							];
+						}
+					}else{
+						$consulta_email =usuarioModelo::ejecutar_consulta_email($email);
+						if($consulta_email->rowCount()==1){
+							$alerta=[
+								"Alerta"=>"simple",
+								"Titulo"=>"Ocurrio un error inesperado",
+								"Texto"=>"El correo ingresado ya se encuentra registrado",
+								"Tipo"=>"error"
+							];
+						}else{
+							$actualizacion=usuarioModelo::modificar_cuenta_usuario_modelo($datos);
+							if($actualizacion>0){
+								$alerta=[
+									"Alerta"=>"limpiar",
+									"Titulo"=>"Administrador registrado2",
+									"Texto"=>"Registro exitoso!",
+									"Tipo"=>"success"
+								];
+								
+							}
+						}
+					}
+					
+				}
+				
+			}else{
+				$alerta=[
+					"Alerta"=>"simple",
+					"Titulo"=>"Ocurrio un error inesperado",
+					"Texto"=>"No existe usuario",
+					"Tipo"=>"error"
+				];
+			}
+			return mainModelo::sweet_alert($alerta);
+		}
+
+		public function modificar_datos_usuario_controlador(){
+			extract($_POST);
+			session_start(['name'=>'S_CISVO']);
+			$documento= mainModelo::limpiar_cadena($documento);
+			$documento= mainModelo::decryption($documento);
+			$nombre= mainModelo::limpiar_cadena($nombre);
+			$apellido= mainModelo::limpiar_cadena($apellido);
+			$direccion= mainModelo::limpiar_cadena($direccion);
+			$genero= mainModelo::limpiar_cadena($genero);
+			$fnac= mainModelo::limpiar_cadena($fnac);
 			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
 
-			$consulta= usuarioModelo::ejecutar_consulta_usuario($id);
-			$array = $consulta->fetch();
-			if($id != $array['Usu_Doc']){
+			$datos =[
+				"Documento"=>$documento,
+				"Nombre"=>$nombre,
+				"Apellido"=>$apellido,
+				"Direccion"=>$direccion,
+				"Sexo"=>$genero,
+				"Fnac"=>$fnac,
+				"Municipio"=>$municipio
+			];
 
-			}else*/
+			$consulta=usuarioModelo::ejecutar_consulta_usuario($documento);
+			$info= $consulta->fetch();
+
+			if($info['Usu_Doc'] != $_SESSION['usuario_CISVO'] || $documento != $_SESSION['usuario_CISVO'] ){
+				$alerta=[
+					"Alerta"=>"simple",
+					"Titulo"=>"Ocurrio un error inesperado",
+					"Texto"=>"Usted intenta modificar infomación de otro usuario/adminsutador",
+					"Tipo"=>"error"
+				];
+			}else{
+				$modificacion=usuarioModelo::modificar_datos_usuario_modelo($datos);
+				if($modificacion->rowCount()==1){
+					$alerta=[
+						"Alerta"=>"limpiar",
+						"Titulo"=>"Modificación exitosa",
+						"Texto"=>"Los datos se modificaron exitosamente!",
+						"Tipo"=>"success"
+					];
+				}else{
+					$alerta=[
+						"Alerta"=>"simple",
+						"Titulo"=>"Ocurrio un error inesperado",
+						"Texto"=>"No se pudo efectuar la actualización",
+						"Tipo"=>"error"
+					];
+				}
+			}
+			return mainModelo::sweet_alert($alerta);
+		}
+
+		public function modificar_clave_usuario_controlador(){
+			extract($_POST);
+			$documento= mainModelo::limpiar_cadena($documento);
+			$documento=mainModelo::decryption($documento);
+			$passAntigua= mainModelo::limpiar_cadena($passAntigua);
+			$passAntigua =mainModelo::encryption($passAntigua);
+			$passNueva= mainModelo::limpiar_cadena($passNueva);
+			$passConfirm= mainModelo::limpiar_cadena($passConfirm);
+
+			if($passNueva != $passConfirm){
+				$alerta=[
+					"Alerta"=>"simple",
+					"Titulo"=>"Ocurrio un error inesperado",
+					"Texto"=>"Verifique nueva clave y confirmación de clave",
+					"Tipo"=>"error"
+				];
+			}else{
+				$consulta=usuarioModelo::ejecutar_consulta_usuario($documento);
+				$info= $consulta->fetch();
+				if($passAntigua != $info['Usu_Clave']){
+					$alerta=[
+						"Alerta"=>"simple",
+						"Titulo"=>"Ocurrio un error inesperado",
+						"Texto"=>"Su clave actual es incorrecta",
+						"Tipo"=>"error"
+					];
+				}else{
+					$pass =mainModelo::encryption($passNueva);
+					if($pass == $info['Usu_Clave']){
+						$alerta=[
+							"Alerta"=>"simple",
+							"Titulo"=>"Ocurrio un error inesperado",
+							"Texto"=>"La clave nueva que desea modificar es igual a la anterior",
+							"Tipo"=>"error"
+						];
+					}else{
+						$datos =[
+							"Documento"=>$documento,
+							"Pass"=>$pass
+						];
+						$modificacion=usuarioModelo::modificar_clave_usuario_modelo($datos);
+						if($modificacion->rowCount()==1){
+							$alerta=[
+								"Alerta"=>"limpiar",
+								"Titulo"=>"Modificación exitosa",
+								"Texto"=>"La contraseña se modificó exitosamente!",
+								"Tipo"=>"success"
+							];
+						}else{
+							$alerta=[
+								"Alerta"=>"simple",
+								"Titulo"=>"Ocurrio un error inesperado",
+								"Texto"=>"No se pudo modificar contraseña",
+								"Tipo"=>"error"
+							];
+						}
+					}
+				}
+			}
+			return mainModelo::sweet_alert($alerta);
 		}
 
 	}

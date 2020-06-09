@@ -12,15 +12,29 @@
 				<img src="<?php echo SERVERURL; ?>vistas/assets/avatars/Male1Avatar.png" alt="UserIcon">
 				<figcaption class="text-center text-titles"><?php echo $_SESSION['nombre_CISVO']." ".$_SESSION['apellido_CISVO'];?></figcaption>
 			</figure>
+			<?php
+				if($_SESSION['rol_CISVO']=="A"){
+					$rol="admin";
+				}elseif($_SESSION['rol_CISVO']=="U"){
+					$rol="usuadmin";
+				}else{
+					$rol="no existe";
+				}
+			?>
 			<ul class="full-box list-unstyled text-center">
 				<li>
-					<a href="<?php echo SERVERURL; ?>misdatos/" title="Mis datos">
+					<a href="<?php echo SERVERURL; ?>misdatos/<?php echo $rol."/".$insLogin->encryption($_SESSION['usuario_CISVO']);?>" title="Mis datos">
 						<i class="zmdi zmdi-account-circle"></i>
 					</a>
 				</li>
 				<li>
-					<a href="<?php echo SERVERURL; ?>micuenta/" title="Mi cuenta">
+					<a href="<?php echo SERVERURL; ?>micuenta/<?php echo $rol."/". $insLogin->encryption($_SESSION['usuario_CISVO']);?>" title="Mi cuenta">
 						<i class="zmdi zmdi-settings"></i>
+					</a>
+				</li>
+				<li>
+					<a href="<?php echo SERVERURL; ?>miclave/<?php echo $rol."/". $insLogin->encryption($_SESSION['usuario_CISVO']);?>" title="Mi clave">
+						<i class="zmdi zmdi-lock"></i>
 					</a>
 				</li>
 				<li>
