@@ -53,13 +53,13 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="documento-txt" required=""  title="El documento debe tener minimo 4 digitos!"  maxlegth="50">
+									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="documento-txt" required=""  title="El documento debe tener minimo 4 digitos!"  maxlength="50">
 								</div>
 							</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) *</label>
-								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="nombre-txt" id="nombre-txt" r required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="nombre-txt" id="nombre-txt"  required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -124,7 +124,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Teléfono *</label>
-								  	<input pattern="[0-9]{1,10}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" required>
+								  	<input pattern="[0-9]{7,10}" class="form-control" type="text" name="telefono-txt"  id="telefono-txt" required maxlength="10">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -145,13 +145,13 @@
 						<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Contraseña *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="password" name="password1-txt" id="password1-txt"required="" maxlength="25">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{10,25}" class="form-control" type="password" name="password1-txt" id="password1-txt"required="" maxlength="25">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Confirme contraseña *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="password" name="password2-txt" id="password2-txt" required="" maxlength="25">
+								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{10,25}" class="form-control" type="password" name="password2-txt" id="password2-txt" required="" maxlength="25">
 								</div>
 		    				</div>
 		    		</div>

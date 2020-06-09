@@ -20,7 +20,7 @@
 		    				<div class="col-xs-12">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">No. Documeto - Placa </label>
-								  	<input pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,30}" class="form-control" type="text" name="nombre-reg"  maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{5,50}" class="form-control" type="text" name="nombre-reg"  maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">

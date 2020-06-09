@@ -87,13 +87,13 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">Tarjeta de Propiedad *</label>
-									<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="tarjetavehiculo-txt"   name="tarjetavehiculo-txt" maxlength="50" required>
+									<input pattern="[0-9+]{5,50}" class="form-control" type="text" name="tarjetavehiculo-txt"   name="tarjetavehiculo-txt" maxlength="50" required>
 								</div>
 							</div>	
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">SOAT *</label>
-									<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="soatvehiculo-txt" name="soatvehiculo-txt" maxlength="50" required>
+									<input pattern="[0-9+]{5,50}" class="form-control" type="text" name="soatvehiculo-txt" name="soatvehiculo-txt" maxlength="50" required>
 								</div>
 							</div>	
 						</div>
@@ -114,7 +114,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 									<label class="control-label">No. Documento *</label>
-									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required title="El documento debe tener minimo 4 digitos!">
+									<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required title="El documento debe tener minimo 4 digitos!" maxlength="70">
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-6">

@@ -4,7 +4,8 @@
 		<p class="text-center text-muted text-uppercase">Inicia sesión con tu cuenta </p>
 		<div class="form-group label-floating">
 		  <label class="control-label" for="UserName">Usuario</label>
-		  <input required="" class="form-control" id="UserName" name="usuario" type="text" style="color: #FFF;">
+		  <input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{4,50}" required="" class="form-control" 
+		  id="UserName" name="usuario" type="text" style="color: #FFF;" title="El usuario debe contener minimo 4 carácteres">
 		  <p class="help-block">Escribe tú nombre de usuario</p>
 		</div>
 		<div class="form-group label-floating">

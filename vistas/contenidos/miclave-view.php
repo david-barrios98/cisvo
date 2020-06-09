@@ -41,19 +41,19 @@
 									<div class="col-xs-12">
 										<div class="form-group label-floating">
 											<label class="control-label">Contraseña actual *</label>
-											<input class="form-control" type="password" name="passAntigua" required="" maxlength="70">
+											<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{10,25}" class="form-control" type="password" name="passAntigua" required="" maxlength="25">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Nueva contraseña *</label>
-											<input class="form-control" type="password" name="passNueva" required="" maxlength="70">
+											<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{10,25}" class="form-control" type="password" name="passNueva" required="" maxlength="25" title="La contraseña debe contener: Minimo 10 Caracteres">
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6">
 										<div class="form-group label-floating">
 											<label class="control-label">Repita la nueva contraseña *</label>
-											<input class="form-control" type="password" name="passConfirm" required="" maxlength="70">
+											<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{10,25}" class="form-control" type="password" name="passConfirm" required="" maxlength="25" title="La contraseña debe contener: Minimo 10 Caracteres">
 										</div>
 									</div>
 								</div>

@@ -44,13 +44,13 @@
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre(s) *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="nombre" id="nombre" value="<?php echo $campos['Usu_Nombre'] ?>" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="nombre" id="nombre" value="<?php echo $campos['Usu_Nombre'] ?>" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Apellido(s) *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="apellido" id="apellido" value="<?php echo $campos['Usu_Apellido'] ?>" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,50}" class="form-control" type="text" name="apellido" id="apellido" value="<?php echo $campos['Usu_Apellido'] ?>" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -62,7 +62,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Dirección</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $campos['Usu_Direccion'] ?>" maxlength="70">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{5,70}" class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $campos['Usu_Direccion'] ?>" maxlength="70">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">

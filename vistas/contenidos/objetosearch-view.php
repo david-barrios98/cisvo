@@ -36,7 +36,7 @@
 			<div class="col-xs-12 col-md-8 col-md-offset-2">
 				<div class="form-group label-floating">
 					<span class="control-label">¿Qué objeto estas buscando?</span>
-					<input class="form-control" type="text" name="objeto-busqueda" required="">
+					<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{5,50}"class="form-control" type="text" name="objeto-busqueda" required="" maxlength="50">
 				</div>
 			</div>
 			<div class="col-xs-12">

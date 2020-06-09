@@ -53,13 +53,13 @@
                             <div class="col-xs-12 col-sm-6">
 						    	<div class="form-group label-floating">
 								  	<label class="control-label">Nombre *</label>
-								  	<input pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,40}" class="form-control" type="text" id="objeto-txt" name="objeto-txt" required="" maxlength="50">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{5,50}" class="form-control" type="text" id="objeto-txt" name="objeto-txt" required="" maxlength="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Modelo *</label>
-								  	<input  class="form-control" type="text" name="modeloobjeto-txt" id="modelobjeto-txt" required="" maxlength="150">
+								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{4,150}"class="form-control" type="text" name="modeloobjeto-txt" id="modelobjeto-txt" required="" maxlength="150">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -79,7 +79,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Cantidad *</label>
-								  	<input pattern="[0-9+]{1,15}" class="form-control" type="text" name="cantidadobjeto-txt" id="cantidadobjeto-txt" maxlength="5" require="">
+								  	<input pattern="[0-9+]{1,5}" class="form-control" type="text" name="cantidadobjeto-txt" id="cantidadobjeto-txt" maxlength="5" require="">
 								</div>
 		    				</div>	
 		    			</div>
@@ -100,7 +100,7 @@
 								<div class="col-xs-12 col-sm-6">
 									<div class="form-group label-floating">
 										<label class="control-label">No. Documento *</label>
-										<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required="" maxlength="30" title="El documento debe tener minimo 4 digitos!">
+										<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required="" maxlength="50" title="El documento debe tener minimo 4 digitos!">
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-6">

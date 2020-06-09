@@ -60,7 +60,7 @@
 			$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
 
 			Funcion para vincular un parametro al nombre de la variable espcificada
-			$sql->bindParam(":Id",$datos['DNI']);
+			$sql->bindParam(":Id",$datos['Docu']);
 			$sql->bindParam(":Nombre",$datos['Nombre']);
 			$sql->bindParam(":Apellido",$datos['Apellido']);
 			$sql->bindParam(":Direccion",$datos['Direccion']);

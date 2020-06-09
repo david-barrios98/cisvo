@@ -18,18 +18,18 @@
 			pasando por una funcion llamada limpiar_cadena(archivo mainModelo)
 		 	para evitar inyecciones sql por los formularios
 			*/
-			$dni=mainModelo::limpiar_cadena($_POST['dni-reg']);
-			$nombre=mainModelo::limpiar_cadena($_POST['nombre-reg']);
-			$apellido=mainModelo::limpiar_cadena($_POST['apellido-reg']);
-			$telefono=mainModelo::limpiar_cadena($_POST['telefono-reg']);
-			$direccion=mainModelo::limpiar_cadena($_POST['direccion-reg']);
+			$docu=mainModelo::limpiar_cadena($_POST['documento-txt']);
+			$nombre=mainModelo::limpiar_cadena($_POST['nombre-txt']);
+			$apellido=mainModelo::limpiar_cadena($_POST['apellido-txt']);
+			$telefono=mainModelo::limpiar_cadena($_POST['telefono-txt']);
+			$direccion=mainModelo::limpiar_cadena($_POST['direccion-txt']);
 			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
-			$fnacimiento=mainModelo::limpiar_cadena($_POST['fnaci-reg']);
-			$pass2=mainModelo::limpiar_cadena($_POST['password2-reg']);
-			$email=mainModelo::limpiar_cadena($_POST['email-reg']);
-			$genero=mainModelo::limpiar_cadena($_POST['genero-reg']);
-			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
-			$rol=mainModelo::limpiar_cadena($_POST['rol-reg']);
+			$fnacimiento=mainModelo::limpiar_cadena($_POST['fechanac-txt']);
+			$pass2=mainModelo::limpiar_cadena($_POST['password2-txt']);
+			$email=mainModelo::limpiar_cadena($_POST['email-txt']);
+			$genero=mainModelo::limpiar_cadena($_POST['genero-txt']);
+			$municipio=mainModelo::limpiar_cadena($_POST['municipio-txt']);
+			$rol=mainModelo::limpiar_cadena($_POST['roluser-txt']);
 
 			/*Foto segun el sexo
 			if ($genero=="Masculino") {
@@ -47,7 +47,7 @@
 				];
 			}else{
 				/*Validación de documento en el sistema*/
-				$consulta_doc=usuarioModelo::ejecutar_consulta_usuario($dni);
+				$consulta_doc=usuarioModelo::ejecutar_consulta_usuario($docu);
 				if ($consulta_doc->rowCount()>=1) {
 					$alerta=[
 						"Alerta"=>"simple",
@@ -73,7 +73,7 @@
 						];
 					}else{
 						/*Validación de Usuario en el sistema*/
-						$consulta_usuario=usuarioModelo::ejecutar_consulta_usuario($dni);
+						$consulta_usuario=usuarioModelo::ejecutar_consulta_usuario($docu);
 						if($consulta_usuario->rowCount()>=1){
 							$alerta=[
 								"Alerta"=>"simple",
@@ -84,7 +84,7 @@
 						}else{
 							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
 							$dataAdmin=[
-								"DNI"=>$dni,
+								"Docu"=>$docu,
 								"Nombre"=>$nombre,
 								"Apellido"=>$apellido,
 								"Telefono"=>$telefono,
@@ -139,7 +139,7 @@
 									usuario y clave sumistrado sera para utilización netamente laboral del CENTRO INDUSTRIAL Y DE AVIACIÓN <br><br>";
 									$correo .= "Tus credenciales para inicio de sesión son:";
 									$correo .= "<ul>";
-									$correo .= "<li>Usuario: $dni</li>";
+									$correo .= "<li>Usuario: $docu</li>";
 									$correo .= "<li>Clave: $pass2</li><br>";
 									$correo .= "<p>Para iniciar sesion haga click <a href='http://localhost/CISVO/' target='_blank'>aquí</a></p>";
 									$correo .= "</ul>";
@@ -452,7 +452,7 @@
 			$direccion= mainModelo::limpiar_cadena($direccion);
 			$genero= mainModelo::limpiar_cadena($genero);
 			$fnac= mainModelo::limpiar_cadena($fnac);
-			$municipio=mainModelo::limpiar_cadena($_POST['municipio-reg']);
+			$municipio=mainModelo::limpiar_cadena($_POST['municipio-txt']);
 
 			$datos =[
 				"Documento"=>$documento,

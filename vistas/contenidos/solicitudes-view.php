@@ -46,7 +46,7 @@
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">No. Documento *</label>
-								  	<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required title="El documento debe tener minimo 4 digitos!">
+								  	<input pattern="[0-9]{4,50}" class="form-control" type="text" name="docpropietario-txt" required title="El documento debe tener minimo 4 digitos!" maxlenght="50">
 								</div>
 		    				</div>
 		    				<div class="col-xs-12 col-sm-6">
@@ -91,7 +91,7 @@
 		    				<div class="col-xs-12 col-sm-12">
 					    		<div class="form-group label-floating">
 								  	<label class="control-label">Ingrese la solucitud, petición o queja*</label>
-									<textarea class="form-control" name="descripsolicitud-txt" id="descripsolicitud-txt" required cols="30" rows="2"></textarea>
+									<textarea class="form-control" name="descripsolicitud-txt" id="descripsolicitud-txt" required cols="30" rows="2" maxlength="1000"></textarea>
 								</div>
 		    				</div>
 		    			</div>

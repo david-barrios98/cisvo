@@ -128,6 +128,7 @@
 			</div>
 		</a>
 	</article>
+	<!--
 	<article class="full-box tile">
 		<a href="<?php echo SERVERURL; ?>parametros/">
 			<div class="full-box tile-title text-center text-titles text-uppercase">
@@ -141,5 +142,5 @@
 				<small>Registros</small>
 			</div>
 		</a>
-	</article>
+	</article>-->
 </div>
