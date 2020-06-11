@@ -22,7 +22,7 @@
             $FechaHora= date("Y-m-d h:i:s a" );
             $Objeto=mainModelo::limpiar_cadena($_POST['objveh-txt']);
             $Vehiculo=mainModelo::limpiar_cadena($_POST['objveh-txt']);
-            $codigo=solicitudModelo::conteo();
+            $codigo=solicitudModelo::conteo(2);
             $codigo=($codigo->rowCount()+1);
         
             $consultaPropietario=solicitudModelo::consultar_propietario($Propietario);
@@ -70,17 +70,27 @@
             return mainModelo::sweet_alert($alerta);
         }
 
-        public function cargar_tabla_solicitudes_controlador($pagina, $regxpagina){
+        public function cargar_tabla_solicitudes_controlador($pagina, $regxpagina,$busqueda){
             $pagina=mainModelo::limpiar_cadena($pagina);
             $regxpagina=mainModelo::limpiar_cadena($regxpagina);
+            $busqueda=mainModelo::limpiar_cadena($busqueda);
             $tabla="";
 
 			$pagina= (isset($pagina) && $pagina>0) ? (int) $pagina  : 1; //pagina actual
-			$inicio = ($pagina > 1) ? ($pagina * $regxpagina - $regxpagina) : 0 ;  //indice de Registro a cargar por pagina
+			$inicio = ($pagina > 1) ? (($pagina * $regxpagina) - $regxpagina) : 0 ;  //indice de Registro a cargar por pagina
             
-            $datos=solicitudModelo::config_tabla_solicitudes_modelo($inicio,$regxpagina);
+            if (isset($busqueda)&& $busqueda!="") {
+                $datos=solicitudModelo::config_tabla_solicitudes_modelo($inicio,$regxpagina,$busqueda,2);
+                $paginaurl="solicitudsearch/";
+                $total_registros = $datos->rowCount();
+			} else {
+                $datos=solicitudModelo::config_tabla_solicitudes_modelo($inicio,$regxpagina,"",1);
+                $paginaurl="solicitudeslist/";
+                $total_registros = solicitudModelo::conteo(1)->rowCount();	   
+			}
+           
 
-            $total_registros = solicitudModelo::conteo(1)->rowCount();
+            
             $numeroPaginas = ceil($total_registros / $regxpagina);   //Redondear
             
             $tabla.='<div class="table-responsive"> 
@@ -146,7 +156,7 @@
                     </tr>';
                 }else{
                     $tabla.= '<tr>
-                        <td colspan="15"> no hay registos de usuarios</td>
+                        <td colspan="15"> No hay registro para mostrar</td>
                     </tr>';
                 }
             }
@@ -163,20 +173,20 @@
                     $tabla.='<li class="disabled"><a>
                     <i class="zmdi zmdi-arrow-left"></i></a></li>';
                 }else{
-                    $tabla.='<li><a href="'.SERVERURL.'solicitudeslist/'.($pagina-1).'/">
+                    $tabla.='<li><a href="'.SERVERURL.$paginaurl.($pagina-1).'/">
                     <i class="zmdi zmdi-arrow-left"></i></a></li>';
                 }
 				for($i = 1; $i <= $numeroPaginas; $i++){ //Identifica la pagina Activa
-					if ($pagina == $i) { 
-						$tabla.= '<li class="active"><a href="'.SERVERURL.'solicitudeslist/'.$i.'/">'.$i.'</a></li>';
-					} else {
-						$tabla.= '<li><a href="'.SERVERURL.'solicitudeslist/'.$i.'/">'.$i.'</a></li>';
-					}
+					if($pagina==$i){
+                        $tabla.='<li class="active"><a href="'.SERVERURL.$paginaurl.$i.'">'.$i.'</a></li>';
+                    }else{
+                        $tabla.='<li><a href="'.SERVERURL.$paginaurl.$i.'">'.$i.'</a></li>';
+                    }
 				}
 				if($pagina==$numeroPaginas){
 					$tabla.= '<li class="disabled"><a><i class="zmdi zmdi-arrow-right"></i></a></li>';
 				}else{
-					$tabla.= '<li><a href="'.SERVERURL.'solicitudeslist/'.($pagina+1).'/"><i class="zmdi zmdi-arrow-right"></i></a></li>';
+					$tabla.= '<li><a href="'.SERVERURL.$paginaurl.($pagina+1).'/"><i class="zmdi zmdi-arrow-right"></i></a></li>';
 				}
 				
 				$tabla.= '</ul>

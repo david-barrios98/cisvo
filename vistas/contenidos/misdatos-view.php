@@ -62,7 +62,7 @@
 		    				<div class="col-xs-12 col-sm-6">
 								<div class="form-group label-floating">
 								  	<label class="control-label">Dirección</label>
-								  	<input pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{5,70}" class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $campos['Usu_Direccion'] ?>" maxlength="70">
+								  	<input pattern="[a-zA-Z0-9àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð- ]{5,70}" class="form-control" type="text" name="direccion" id="direccion" value="<?php echo $campos['Usu_Direccion'] ?>" maxlength="70">
 								</div>
 		    				</div>
 							<div class="col-xs-12 col-sm-6">

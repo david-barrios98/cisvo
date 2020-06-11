@@ -9,13 +9,17 @@
 	*@author David Barrios
 	*El presente archivo contiene la clase(usuarioModelo) que interactura con la base de datos. 
 	*/
-	class usuarioModelo extends mainModelo{
-        
+	class usuarioModelo extends mainModelo{ 	
 		/**
-		*@param $datos parametro tipo array para crear usuario 
+		 * @param $datos parametro tipo array para crear usuario 
+		 *
 		*/
 		protected function agregar_usuarios_modelo($datos){
-			//$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
+			/* procedimientos
+			$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios
+			(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, 
+			:Municipio, :Correo, :Telefono, :Clave, :Rol);");*/
+
 			$sql=mainModelo::conectar_bd()->prepare("INSERT INTO tbl_usuario VALUES(:Doc,:Nombre,:Apellido,:Sexo,:Fnac,:Direccion,:Municipio,:Correo,:Telefono,:Clave,:Rol,:Foto,:Estado)");
 			/*Funcion para vincular un parametro al nombre de la variable espcificada */	
 			$sql->bindParam(":Doc",$datos['Doc']);
@@ -33,48 +37,7 @@
 			$sql->bindParam(":Estado",$datos['Estado']);
 			$sql->execute();
 			return $sql;
-			/*$email_to = $datos['Correo'];
-			$email_subject = "Confirma tu email Photogram";
-			$email_from = "reply.localhost.com";
-
-			$email_message = "Hola ".$datos['Nombre'].", para poder disfrutar de nuestro sitio web, debes confirmar tu email\n\n";
-			$email_message .= "Ingresa el siguiente codigo para confirmar tu email\n\n";
-			//$email_message .= "Codigo: " . $aleatorio . "\n";
-
-
-			// Ahora se envía el e-mail usando la función mail() de PHP
-			$headers = 'From: '.$email_from."\r\n".
-			'Reply-To: '.$email_from."\r\n" .
-			'X-Mailer: PHP/' . phpversion();
-			mail($email_to, $email_subject, $email_message, $headers);*/
-
-			
 		}
-
-		 /**
-		 * @param $datos parametro tipo array para crear usuario 
-		 *
-		*/
-		/*protected function agregar2_usuarios_modelo($datos){
-			
-			$sql=mainModelo::conectar_bd()->prepare("CALL registro_usuarios(:Id, :Nombre, :Apellido, :Sexo, :Fnac, :Direccion, :Municipio, :Correo, :Telefono, :Clave, :Rol);");
-
-			Funcion para vincular un parametro al nombre de la variable espcificada
-			$sql->bindParam(":Id",$datos['Docu']);
-			$sql->bindParam(":Nombre",$datos['Nombre']);
-			$sql->bindParam(":Apellido",$datos['Apellido']);
-			$sql->bindParam(":Direccion",$datos['Direccion']);
-			$sql->bindParam(":Telefono",$datos['Telefono']);
-			$sql->bindParam(":Clave",$datos['Clave']);
-			$sql->bindParam(":Fnac",$datos['Fnacimiento']);
-			$sql->bindParam(":Correo",$datos['Correo']);
-			//$sql->bindParam(":Estado",$datos['Estado']);
-			$sql->bindParam(":Municipio",$datos['Municipio']);
-			$sql->bindParam(":Sexo",$datos['Sexo']);
-			$sql->bindParam(":Rol",$datos['Rol']);
-			$sql->execute();
-			return $sql;
-		}*/
 
 		protected function datos_usuario_modelo($tipo, $id_usu){
 			

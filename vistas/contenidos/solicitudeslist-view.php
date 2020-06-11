@@ -38,7 +38,7 @@
 
 			<?php
 				$pagina = explode("/", $_GET['views']);
-				echo $insSolicitud->cargar_tabla_solicitudes_controlador($pagina[1],2);
+				echo $insSolicitud->cargar_tabla_solicitudes_controlador($pagina[1],10,"");
 			?>
 			<!--<div class="table-responsive">
 				<table class="table table-hover text-center">

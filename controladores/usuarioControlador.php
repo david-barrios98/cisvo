@@ -1,9 +1,19 @@
 <?php
+	use phpmailer\PHPMailer\PHPMailer;
+	use phpmailer\PHPMailer\Exception;
+
 
 	if($peticionAjax){
 		require_once "../modelos/usuarioModelo.php";
+		require_once "../core/PHPMailer/Exception.php";
+		require_once '../core/PHPMailer/PHPMailer.php';
+		require_once '../core/PHPMailer/SMTP.php';
+		
 	}else{
 		require_once "./modelos/usuarioModelo.php";
+		require_once "./core/PHPMailer/Exception.php";
+		require_once './core/PHPMailer/PHPMailer.php';
+		require_once './core/PHPMailer/SMTP.php';
 	}
 	
 	/**
@@ -23,7 +33,7 @@
 			$apellido=mainModelo::limpiar_cadena($_POST['apellido-txt']);
 			$telefono=mainModelo::limpiar_cadena($_POST['telefono-txt']);
 			$direccion=mainModelo::limpiar_cadena($_POST['direccion-txt']);
-			$pass1=mainModelo::limpiar_cadena($_POST['password1-reg']);
+			$pass1=mainModelo::limpiar_cadena($_POST['password1-txt']);
 			$fnacimiento=mainModelo::limpiar_cadena($_POST['fechanac-txt']);
 			$pass2=mainModelo::limpiar_cadena($_POST['password2-txt']);
 			$email=mainModelo::limpiar_cadena($_POST['email-txt']);
@@ -31,12 +41,12 @@
 			$municipio=mainModelo::limpiar_cadena($_POST['municipio-txt']);
 			$rol=mainModelo::limpiar_cadena($_POST['roluser-txt']);
 
-			/*Foto segun el sexo
+			//Foto segun el sexo
 			if ($genero=="Masculino") {
 				$foto="AdminMale.png";
 			} else {
 				$foto="AdminFemale.png";
-			}*/
+			}
 			/*comprobacion de contraseña, que sean identicas*/
 			if ($pass1 != $pass2) {
 				$alerta=[
@@ -83,7 +93,7 @@
 							];
 						}else{
 							$clave=mainModelo::encryption($pass1);//Encripto la contraseña
-							$dataAdmin=[
+							/*$dataAdmin=[
 								"Docu"=>$docu,
 								"Nombre"=>$nombre,
 								"Apellido"=>$apellido,
@@ -96,6 +106,21 @@
 								//"Estado"=>'A',
 								"Rol"=>$rol,
 								"Correo"=>$email
+							];*/
+							$dataAdmin=[
+								"Doc"=>$docu,
+								"Nombre"=>$nombre,
+								"Apellido"=>$apellido,
+								"Sexo"=>$genero,
+								"Fnac"=>$fnacimiento,
+								"Direccion"=>$direccion,
+								"Municipio"=>$municipio,
+								"Correo"=>$email,
+								"Telefono"=>$telefono,
+								"Clave"=>$clave,
+								"Rol"=>$rol,
+								"Foto"=>$foto,
+								"Estado"=>'A'
 							];
 							$guardarAdmin=usuarioModelo::agregar_usuarios_modelo($dataAdmin);
 
@@ -130,7 +155,7 @@
 									// Content
 									$mail->isHTML(true);                                  // Set email format to HTML
 									$mail->Subject = 'REGISTRO EXITOSO!';
-									$correo = "<div style='width:90%; border:4px ridge blue; padding:6px;'>";
+									$correo = "<div style='width:90%; border:4px ridge #FF6600; padding:6px;'>";
 									$correo .= "<h1 color='black';>EN BUENA HORA, HAS REALIZADO TU REGISTRO DE FORMA EXITOSA </h1>";
 									$correo .= "</div>";
 									$correo .= "<div width:90%;>";
